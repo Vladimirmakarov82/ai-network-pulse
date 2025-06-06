@@ -25,7 +25,6 @@ const Pricing: React.FC = () => {
       ],
       cta: t('cta.early.access'),
       action: () => {
-        // Early access flow - will be implemented
         console.log('Early access for Pulse Pass');
       }
     },
@@ -37,10 +36,10 @@ const Pricing: React.FC = () => {
       color: 'pulse-blue',
       popular: false,
       features: [
-        'All Pulse Pass features',
-        'Speaking opportunities',
-        'Expert showcase',
-        'Priority AI recommendations'
+        t('pricing.builder.features.1'),
+        t('pricing.builder.features.2'),
+        t('pricing.builder.features.3'),
+        t('pricing.builder.features.4')
       ],
       cta: t('cta.early.access'),
       action: () => {
@@ -55,14 +54,13 @@ const Pricing: React.FC = () => {
       color: 'pulse-orange',
       popular: false,
       features: [
-        'Organize weekly meetups',
-        'Personal dashboard',
-        'Revenue sharing',
-        'First 30 organizers special price'
+        t('pricing.org.features.1'),
+        t('pricing.org.features.2'),
+        t('pricing.org.features.3'),
+        t('pricing.org.features.4')
       ],
       cta: t('cta.become.organizer'),
       action: () => {
-        // Open organizer application - will be implemented
         console.log('Open organizer application');
       }
     }
@@ -90,7 +88,7 @@ const Pricing: React.FC = () => {
             >
               {plan.popular && (
                 <Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-pulse-green text-white px-4 py-1">
-                  Most Popular
+                  {t('pricing.popular')}
                 </Badge>
               )}
               
@@ -112,7 +110,7 @@ const Pricing: React.FC = () => {
                     {plan.earlyPrice}
                   </p>
                   <p className="text-sm text-gray-500 mt-1">
-                    Early Access Special
+                    {t('pricing.early.special')}
                   </p>
                 </div>
               </CardHeader>
@@ -150,23 +148,23 @@ const Pricing: React.FC = () => {
               </p>
               <div className="grid md:grid-cols-3 gap-4 text-sm">
                 <div className="bg-white rounded-lg p-4">
-                  <h4 className="font-semibold mb-2">Referral Commission</h4>
-                  <p className="text-gray-600">Earn 4.5% on all referral sales</p>
+                  <h4 className="font-semibold mb-2">{t('pricing.ambassador.commission.title')}</h4>
+                  <p className="text-gray-600">{t('pricing.ambassador.commission.description')}</p>
                 </div>
                 <div className="bg-white rounded-lg p-4">
-                  <h4 className="font-semibold mb-2">Personal Dashboard</h4>
-                  <p className="text-gray-600">Track all purchases via your link</p>
+                  <h4 className="font-semibold mb-2">{t('pricing.ambassador.dashboard.title')}</h4>
+                  <p className="text-gray-600">{t('pricing.ambassador.dashboard.description')}</p>
                 </div>
                 <div className="bg-white rounded-lg p-4">
-                  <h4 className="font-semibold mb-2">Custom Links</h4>
-                  <p className="text-gray-600">Generate personalized referral URLs</p>
+                  <h4 className="font-semibold mb-2">{t('pricing.ambassador.links.title')}</h4>
+                  <p className="text-gray-600">{t('pricing.ambassador.links.description')}</p>
                 </div>
               </div>
               <Button 
                 variant="outline" 
                 className="mt-6 border-pulse-purple text-pulse-purple hover:bg-pulse-purple hover:text-white"
               >
-                Apply for Ambassador Role
+                {t('cta.ambassador.apply')}
               </Button>
             </CardContent>
           </Card>
@@ -176,22 +174,22 @@ const Pricing: React.FC = () => {
         <div className="mt-12 max-w-4xl mx-auto">
           <Card className="border-0 shadow-lg">
             <CardContent className="p-8 text-center">
-              <h3 className="text-2xl font-bold mb-4">Corporate Pulse Pass</h3>
+              <h3 className="text-2xl font-bold mb-4">{t('pricing.corporate.title')}</h3>
               <p className="text-gray-600 mb-6">
-                Perfect gift for employees. AI agent promotes company interests based on active participants.
+                {t('pricing.corporate.description')}
               </p>
               <div className="grid md:grid-cols-2 gap-4 text-sm mb-6">
                 <div className="bg-gray-50 rounded-lg p-4">
-                  <h4 className="font-semibold mb-2">10+ Passes</h4>
-                  <p className="text-gray-600">10% discount</p>
+                  <h4 className="font-semibold mb-2">{t('pricing.corporate.discount1')}</h4>
+                  <p className="text-gray-600">{t('pricing.corporate.discount1.value')}</p>
                 </div>
                 <div className="bg-gray-50 rounded-lg p-4">
-                  <h4 className="font-semibold mb-2">50+ Passes</h4>
-                  <p className="text-gray-600">15% discount</p>
+                  <h4 className="font-semibold mb-2">{t('pricing.corporate.discount2')}</h4>
+                  <p className="text-gray-600">{t('pricing.corporate.discount2.value')}</p>
                 </div>
               </div>
               <Button className="bg-pulse-blue hover:bg-pulse-blue/90 text-white">
-                Request Corporate Quote
+                {t('cta.corporate.quote')}
               </Button>
             </CardContent>
           </Card>

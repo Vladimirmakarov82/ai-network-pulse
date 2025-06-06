@@ -66,28 +66,28 @@ const About: React.FC = () => {
             <CardContent className="p-8 md:p-12">
               <div className="text-center">
                 <h3 className="text-2xl md:text-3xl font-bold mb-6 gradient-text">
-                  How AI Agent Works
+                  {t('about.ai.works.title')}
                 </h3>
                 <div className="grid md:grid-cols-3 gap-6 text-left">
                   <div className="flex items-start gap-3">
                     <div className="w-8 h-8 bg-pulse-green rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0">1</div>
                     <div>
-                      <h4 className="font-semibold mb-2">Meeting Recording</h4>
-                      <p className="text-sm text-gray-600">Meetings are recorded (opt-out available) for AI analysis</p>
+                      <h4 className="font-semibold mb-2">{t('about.ai.step1.title')}</h4>
+                      <p className="text-sm text-gray-600">{t('about.ai.step1.description')}</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <div className="w-8 h-8 bg-pulse-blue rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0">2</div>
                     <div>
-                      <h4 className="font-semibold mb-2">AI Analysis</h4>
-                      <p className="text-sm text-gray-600">AI transcribes and understands what you do and what you're looking for</p>
+                      <h4 className="font-semibold mb-2">{t('about.ai.step2.title')}</h4>
+                      <p className="text-sm text-gray-600">{t('about.ai.step2.description')}</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <div className="w-8 h-8 bg-pulse-pink rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0">3</div>
                     <div>
-                      <h4 className="font-semibold mb-2">Smart Recommendations</h4>
-                      <p className="text-sm text-gray-600">Receive lists of who you can help and who can help you - clients, partners, investors</p>
+                      <h4 className="font-semibold mb-2">{t('about.ai.step3.title')}</h4>
+                      <p className="text-sm text-gray-600">{t('about.ai.step3.description')}</p>
                     </div>
                   </div>
                 </div>
