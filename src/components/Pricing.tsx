@@ -163,6 +163,7 @@ const Pricing: React.FC = () => {
               <Button 
                 variant="outline" 
                 className="mt-6 border-pulse-purple text-pulse-purple hover:bg-pulse-purple hover:text-white"
+                onClick={() => window.open('https://forms.gle/3QDRp53KjkvZbX2c6', '_blank')}
               >
                 {t('cta.ambassador.apply')}
               </Button>
@@ -188,7 +189,10 @@ const Pricing: React.FC = () => {
                   <p className="text-gray-600">{t('pricing.corporate.discount2.value')}</p>
                 </div>
               </div>
-              <Button className="bg-pulse-blue hover:bg-pulse-blue/90 text-white">
+              <Button 
+                className="bg-pulse-blue hover:bg-pulse-blue/90 text-white"
+                onClick={() => window.open('https://forms.gle/Y9m9QiWgTqcRSQQ89', '_blank')}
+              >
                 {t('cta.corporate.quote')}
               </Button>
             </CardContent>
