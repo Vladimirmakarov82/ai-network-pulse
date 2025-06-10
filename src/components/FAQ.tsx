@@ -34,6 +34,30 @@ const FAQ: React.FC = () => {
     {
       question: t('faq.q7'),
       answer: t('faq.a7')
+    },
+    {
+      question: t('faq.q8'),
+      answer: t('faq.a8')
+    },
+    {
+      question: t('faq.q9'),
+      answer: t('faq.a9')
+    },
+    {
+      question: t('faq.q10'),
+      answer: t('faq.a10')
+    },
+    {
+      question: t('faq.q11'),
+      answer: t('faq.a11')
+    },
+    {
+      question: t('faq.q12'),
+      answer: t('faq.a12')
+    },
+    {
+      question: t('faq.q13'),
+      answer: t('faq.a13')
     }
   ];
 
@@ -57,7 +81,7 @@ const FAQ: React.FC = () => {
                 <AccordionTrigger className="text-left font-semibold text-gray-900 hover:no-underline py-6">
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-gray-600 pb-6 leading-relaxed">
+                <AccordionContent className="text-gray-600 pb-6 leading-relaxed whitespace-pre-line">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>
