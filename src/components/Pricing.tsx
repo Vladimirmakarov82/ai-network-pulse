@@ -6,8 +6,14 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Check } from 'lucide-react';
 
+// Настройка количества доступных ORG PASS (можно легко изменить)
+const TOTAL_ORG_PASSES = 30;
+const SOLD_ORG_PASSES = 4; // Измените это число по мере продаж
+
 const Pricing: React.FC = () => {
   const { t, language } = useLanguage();
+  
+  const remainingOrgPasses = TOTAL_ORG_PASSES - SOLD_ORG_PASSES;
 
   const plans = [
     {
@@ -62,7 +68,8 @@ const Pricing: React.FC = () => {
       cta: t('cta.become.organizer'),
       action: () => {
         console.log('Open organizer application');
-      }
+      },
+      isOrgPass: true // Маркер для ORG PASS
     }
   ];
 
@@ -112,6 +119,18 @@ const Pricing: React.FC = () => {
                   <p className="text-sm text-gray-500 mt-1">
                     {t('pricing.early.special')}
                   </p>
+                  
+                  {/* Счетчик для ORG PASS */}
+                  {plan.isOrgPass && (
+                    <div className="mt-3 p-2 bg-pulse-orange/10 rounded-lg">
+                      <p className="text-sm font-semibold text-pulse-orange">
+                        {language === 'ru' 
+                          ? `Осталось ${remainingOrgPasses} из ${TOTAL_ORG_PASSES}`
+                          : `${remainingOrgPasses} of ${TOTAL_ORG_PASSES} remaining`
+                        }
+                      </p>
+                    </div>
+                  )}
                 </div>
               </CardHeader>
 
