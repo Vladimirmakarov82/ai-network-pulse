@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
 type Language = 'en' | 'ru';
@@ -43,6 +42,25 @@ const translations = {
     'about.ai.step2.description': 'You can forget who you met last week — AI won\'t forget. Every your participation in Pulse is a set of signals: voice, interests, goals, requests.',
     'about.ai.step3.title': 'Smart Recommendations',
     'about.ai.step3.description': 'AI connects them with hundreds of other participants worldwide and offers you precise matches — partners, clients, friends, co-founders.',
+    
+    // Pulse AI Section
+    'pulseai.title': 'Pulse AI for Telegram Communities',
+    'pulseai.subtitle': 'Integrate our AI bot into your Telegram community to create meaningful connections based on member introductions.',
+    'pulseai.feature1.title': '3-5 Daily Matches',
+    'pulseai.feature1.description': 'Our AI creates 3-5 quality connections between community members every day',
+    'pulseai.feature2.title': 'Member Delight',
+    'pulseai.feature2.description': 'Guaranteed excitement from participants as they discover perfect matches',
+    'pulseai.feature3.title': 'Easy Setup',
+    'pulseai.feature3.description': 'Just need member intros in chat - if absent, bot will help collect them',
+    'pulseai.pricing.title': 'Pricing for Communities',
+    'pulseai.pricing.monthly': 'Monthly',
+    'pulseai.pricing.monthly.price': '$40/month',
+    'pulseai.pricing.yearly': 'Yearly',
+    'pulseai.pricing.yearly.price': '$333/year',
+    'pulseai.cta': 'Connect Pulse AI',
+    'pulseai.example.title': 'Daily Match Example',
+    'pulseai.example.content': 'Eugene @name, I recommend you meet Olga @name.\n\nOlga has a rare, almost cinematic trajectory. Behind her are decades of management in real, heavy logistics: coal trading, hundreds of wagons in ownership and leasing, the entire chain from raw materials to contracts.\n\nAnd now, an unexpected turn: she\'s moving into IT, building a systematic automation direction, implementing 1C, doing this because she deeply understands where data becomes leverage.\n\nOlga, I think you\'ll find it interesting to talk with Eugene.\n\nEugene is a new generation founder: a technologist who created a logistics and delivery platform that already works with Amazon and other international platforms. He thinks in terms of speed, scale, and product architecture.\n\nHe builds solutions that withstand load and scale.\n\n📍Why I decided to introduce you:\n• You have opposite experience but the same depth: one goes from industry to technology, the other from technology to real business\n• You have almost the same writing style: restrained, business-like, confident\n• You both work in logistics but see it from different sides\n• Both avoid loud words — and surprisingly, this makes your introduction especially promising\n\n📬 Eugene, suggest a Zoom — this could be an interesting conversation for you.',
+    'pulseai.example.footer': 'Our bot makes 3-5 such introductions every day.',
     
     // Pricing
     'pricing.title': 'Choose Your Role',
@@ -169,6 +187,25 @@ const translations = {
     'about.ai.step3.title': 'Умные рекомендации',
     'about.ai.step3.description': 'AI соединяет их с сотнями других участников по всему миру и предлагает тебе точные совпадения — партнёров, клиентов, друзей, сооснователей.',
     
+    // Pulse AI Section
+    'pulseai.title': 'Pulse AI для Telegram-сообществ',
+    'pulseai.subtitle': 'Встройте нашего ИИ-бота в ваше Telegram-сообщество для создания значимых знакомств на основе интро участников.',
+    'pulseai.feature1.title': '3-5 матчей ежедневно',
+    'pulseai.feature1.description': 'Наш ИИ создает 3-5 качественных знакомств между участниками сообщества каждый день',
+    'pulseai.feature2.title': 'Восторг участников',
+    'pulseai.feature2.description': 'Гарантированный восторг со стороны участников при обнаружении идеальных совпадений',
+    'pulseai.feature3.title': 'Простая настройка',
+    'pulseai.feature3.description': 'Нужны только интро участников в чате — если их нет, бот поможет собрать',
+    'pulseai.pricing.title': 'Стоимость для сообществ',
+    'pulseai.pricing.monthly': 'Месячная подписка',
+    'pulseai.pricing.monthly.price': '2 990 ₽/мес',
+    'pulseai.pricing.yearly': 'Годовая подписка',
+    'pulseai.pricing.yearly.price': '25 000 ₽/год',
+    'pulseai.cta': 'Подключить Pulse AI',
+    'pulseai.example.title': 'Пример ежедневного матча',
+    'pulseai.example.content': 'Евгений @name, рекомендую тебе познакомиться с Ольгой @name.\n\nОльга — человек с редкой, почти кинематографической траекторией. За её плечами — десятилетия управления в реальной, тяжёлой логистике: трейдинг угля, сотни вагонов в собственности и лизинге, вся цепочка — от сырья до договоров.\n\nИ сейчас, неожиданный поворот: она переходит в IT, строит системное направление по автоматизации процессов, внедряет 1С, делает это, потому что глубоко понимает, где данные становятся рычагом.\n\nОльга, почему мне кажется, тебе будет интересно пообщаться с Евгением.\n\nЕвгений — фаундер нового поколения: технолог, создавший платформу для логистики и доставки, которая уже работает с Amazon и другими международными площадками. Он мыслит скоростью, масштабом и продуктовой архитектурой.\n\nОн строит решение, которое выдерживает нагрузку и масштаб.\n\n📍Почему я решил вас познакомить:\n• У вас противоположный опыт, но одинаковая глубина: один идёт из индустрии к технологии, другой — из технологии к реальному бизнесу\n• У вас почти одинаковый стиль письма: сдержанный, деловой, уверенный — это не видно сразу, но нейросети замечают\n• Вы оба работаете в логистике, но видите её с разных сторон\n• Оба избегаете громких слов — и, как ни странно, именно это делает ваше знакомство особенно перспективным\n\n📬 Евгений, предложи Zoom — это может быть интересный для вас разговор.',
+    'pulseai.example.footer': 'Наш бот делает 3-5 таких знакомств каждый день.',
+    
     // Pricing
     'pricing.title': 'Выберите свою роль',
     'pricing.subtitle': 'Присоединяйтесь к революции нетворкинга',
@@ -214,7 +251,6 @@ const translations = {
     'pricing.early.special': 'Специальное предложение раннего доступа',
     'pricing.popular': 'Самый популярный',
     
-    // CTA Buttons
     'cta.early.access': 'Ранний доступ',
     'cta.become.organizer': 'Стать организатором',
     'cta.apply': 'Подать заявку',
@@ -222,7 +258,6 @@ const translations = {
     'cta.corporate.quote': 'Запросить корпоративное предложение',
     'cta.ambassador.apply': 'Подать заявку на роль амбассадора',
     
-    // Footer
     'footer.description': 'Глобальное сообщество нетворкинга с ИИ',
     'footer.links': 'Быстрые ссылки',
     'footer.community': 'Сообщество',
@@ -231,7 +266,6 @@ const translations = {
     'footer.telegram.open': 'Открытый канал',
     'footer.telegram.organizers': 'Канал организаторов',
     
-    // FAQ
     'faq.title': 'Часто задаваемые вопросы',
     'faq.q1': 'Что я получу сразу после оплаты?',
     'faq.a1': '— Возможность приходить на любые встречи Pulse в любом городе — без ограничений. — На первой встрече ты кратко расскажешь, чем можешь быть полезен и что ищешь. — С этого момента ИИ начинает работать на тебя: он анализирует контексты встреч и сам подбирает людей, которые могут стать твоими клиентами, партнёрами или сотрудниками. — Хочешь больше, приходи чаще, делись обновлениями, а ИИ будет 24/7 искать решения с помощью других участников клуба.',
