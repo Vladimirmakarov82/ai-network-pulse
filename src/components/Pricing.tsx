@@ -89,8 +89,8 @@ const Pricing: React.FC = () => {
           {plans.map((plan, index) => (
             <Card 
               key={index} 
-              className={`relative border-0 shadow-lg hover:shadow-xl transition-all duration-300 ${
-                plan.popular ? 'ring-2 ring-pulse-green ring-opacity-50 scale-105' : ''
+              className={`relative border-0 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer hover-scale ${
+                plan.popular ? 'ring-2 ring-pulse-green ring-opacity-50 scale-105' : 'hover:ring-2 hover:ring-pulse-green hover:ring-opacity-50 hover:scale-105'
               }`}
             >
               {plan.popular && (
