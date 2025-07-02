@@ -23,7 +23,7 @@ const translations = {
     'hero.description': 'In Pulse — connections that really work. Every meeting is AI navigation to new opportunities: investors, clients, friends. Whether you\'re in Berlin, Bali or Bucharest — the same format, same culture, same meaning awaits you.',
     'hero.cta.primary': 'Get Early Access',
     'hero.cta.secondary': 'Join Telegram',
-    'hero.launch.date': 'Launch: June 19, 2025',
+    'hero.launch.date': 'Launch: July 2025',
     
     // About Section
     'about.title': 'The Future of Business Networking',
@@ -167,7 +167,7 @@ const translations = {
     'hero.description': 'В Pulse — связи, которые реально работают. Каждая встреча — это AI-навигация к новым возможностям: инвесторы, клиенты, друзья. Ты в Берлине, Бали или Бухаресте — тебя ждёт тот же формат, та же культура, те же смыслы.',
     'hero.cta.primary': 'Ранний доступ',
     'hero.cta.secondary': 'Telegram канал',
-    'hero.launch.date': 'Запуск: 19 июня 2025',
+    'hero.launch.date': 'Запуск: июль 2025',
     
     // About Section
     'about.title': 'Будущее бизнес-нетворкинга',
