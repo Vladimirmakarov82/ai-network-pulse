@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -12,6 +12,7 @@ const SOLD_ORG_PASSES = 4; // Измените это число по мере �
 
 const Pricing: React.FC = () => {
   const { t, language } = useLanguage();
+  const [hoveredPlan, setHoveredPlan] = useState<number | null>(null);
   
   const remainingOrgPasses = TOTAL_ORG_PASSES - SOLD_ORG_PASSES;
 
@@ -86,13 +87,17 @@ const Pricing: React.FC = () => {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {plans.map((plan, index) => (
-            <Card 
-              key={index} 
-              className={`relative border-0 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer hover-scale ${
-                plan.popular ? 'ring-2 ring-pulse-green ring-opacity-50 scale-105' : 'hover:ring-2 hover:ring-pulse-green hover:ring-opacity-50 hover:scale-105'
-              }`}
-            >
+          {plans.map((plan, index) => {
+            const isHighlighted = hoveredPlan !== null ? hoveredPlan === index : plan.popular;
+            return (
+              <Card 
+                key={index} 
+                className={`relative border-0 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer hover-scale ${
+                  isHighlighted ? 'ring-2 ring-pulse-green ring-opacity-50 scale-105' : ''
+                }`}
+                onMouseEnter={() => setHoveredPlan(index)}
+                onMouseLeave={() => setHoveredPlan(null)}
+              >
               {plan.popular && (
                 <Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-pulse-green text-white px-4 py-1">
                   {t('pricing.popular')}
@@ -152,7 +157,8 @@ const Pricing: React.FC = () => {
                 </Button>
               </CardContent>
             </Card>
-          ))}
+            );
+          })}
         </div>
 
         {/* Ambassador Section */}
