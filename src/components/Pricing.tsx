@@ -92,7 +92,7 @@ const Pricing: React.FC = () => {
             return (
               <Card 
                 key={index} 
-                className={`relative border-0 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer hover-scale ${
+                className={`relative border-0 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer hover-scale flex flex-col h-full ${
                   isHighlighted ? 'ring-2 ring-pulse-green ring-opacity-50 scale-105' : ''
                 }`}
                 onMouseEnter={() => setHoveredPlan(index)}
@@ -139,8 +139,8 @@ const Pricing: React.FC = () => {
                 </div>
               </CardHeader>
 
-              <CardContent className="pt-0">
-                <ul className="space-y-3 mb-6">
+              <CardContent className="pt-0 flex flex-col flex-grow">
+                <ul className="space-y-3 mb-6 flex-grow">
                   {plan.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-start gap-3">
                       <Check className="h-5 w-5 text-pulse-green flex-shrink-0 mt-0.5" />
@@ -150,7 +150,7 @@ const Pricing: React.FC = () => {
                 </ul>
 
                 <Button 
-                  className={`w-full bg-${plan.color} hover:bg-${plan.color}/90 text-white font-semibold py-3`}
+                  className={`w-full bg-${plan.color} hover:bg-${plan.color}/90 text-white font-semibold py-3 mt-auto`}
                   onClick={plan.action}
                 >
                   {plan.cta}
