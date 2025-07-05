@@ -1,11 +1,13 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
-import { MessageCircle, Users, Zap, CheckCircle } from 'lucide-react';
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
+import { MessageCircle, Users, Zap, CheckCircle, ChevronDown } from 'lucide-react';
 
 const PulseAI: React.FC = () => {
   const { t } = useLanguage();
+  const [isExampleOpen, setIsExampleOpen] = useState(false);
 
   return (
     <section id="pulse-ai" className="py-20 bg-gradient-to-br from-blue-50 to-purple-50">
@@ -72,16 +74,23 @@ const PulseAI: React.FC = () => {
           </div>
 
           <div className="bg-white rounded-xl shadow-lg p-6 border">
-            <div className="flex items-center gap-3 mb-4">
-              <MessageCircle className="w-6 h-6 text-blue-600" />
-              <h4 className="text-lg font-semibold">{t('pulseai.example.title')}</h4>
-            </div>
-            <div className="bg-gray-50 rounded-lg p-4 text-sm leading-relaxed whitespace-pre-line">
-              {t('pulseai.example.content')}
-            </div>
-            <p className="text-center text-gray-600 mt-4 font-medium">
-              {t('pulseai.example.footer')}
-            </p>
+            <Collapsible open={isExampleOpen} onOpenChange={setIsExampleOpen}>
+              <CollapsibleTrigger className="flex items-center justify-between w-full mb-4 hover:opacity-70 transition-opacity">
+                <div className="flex items-center gap-3">
+                  <MessageCircle className="w-6 h-6 text-blue-600" />
+                  <h4 className="text-lg font-semibold">{t('pulseai.example.title')}</h4>
+                </div>
+                <ChevronDown className={`w-5 h-5 text-gray-500 transition-transform duration-200 ${isExampleOpen ? 'rotate-180' : ''}`} />
+              </CollapsibleTrigger>
+              <CollapsibleContent className="space-y-4">
+                <div className="bg-gray-50 rounded-lg p-4 text-sm leading-relaxed whitespace-pre-line">
+                  {t('pulseai.example.content')}
+                </div>
+                <p className="text-center text-gray-600 font-medium">
+                  {t('pulseai.example.footer')}
+                </p>
+              </CollapsibleContent>
+            </Collapsible>
           </div>
         </div>
       </div>
