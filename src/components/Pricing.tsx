@@ -216,7 +216,7 @@ const Pricing: React.FC = () => {
               </div>
               <Button 
                 className="bg-pulse-blue hover:bg-pulse-blue/90 text-white"
-                onClick={() => window.open('https://forms.gle/Y9m9QiWgTqcRSQQ89', '_blank')}
+                onClick={() => window.open('https://forms.yandex.ru/cloud/688a81554936390be84fd1a1', '_blank')}
               >
                 {t('cta.corporate.quote')}
               </Button>

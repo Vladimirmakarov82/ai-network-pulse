@@ -21,9 +21,9 @@ const PulseAI: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
-          <div>
-            <div className="grid gap-6">
+        <div className="grid lg:grid-cols-2 gap-12 mb-16">
+          <div className="flex flex-col">
+            <div className="grid gap-6 flex-grow">
               <div className="flex items-start gap-4">
                 <div className="bg-blue-100 p-3 rounded-lg">
                   <Users className="w-6 h-6 text-blue-600" />
@@ -55,7 +55,7 @@ const PulseAI: React.FC = () => {
               </div>
             </div>
 
-            <div className="mt-8 p-6 bg-white rounded-xl shadow-lg border">
+            <div className="mt-auto p-6 bg-white rounded-xl shadow-lg border">
               <h4 className="text-lg font-semibold mb-4">{t('pulseai.pricing.title')}</h4>
               <div className="space-y-3">
                 <div className="flex justify-between items-center">
@@ -73,24 +73,19 @@ const PulseAI: React.FC = () => {
             </div>
           </div>
 
-          <div className="bg-white rounded-xl shadow-lg p-6 border">
-            <Collapsible open={isExampleOpen} onOpenChange={setIsExampleOpen}>
-              <CollapsibleTrigger className="flex items-center justify-between w-full mb-4 hover:opacity-70 transition-opacity">
-                <div className="flex items-center gap-3">
-                  <MessageCircle className="w-6 h-6 text-blue-600" />
-                  <h4 className="text-lg font-semibold">{t('pulseai.example.title')}</h4>
-                </div>
-                <ChevronDown className={`w-5 h-5 text-gray-500 transition-transform duration-200 ${isExampleOpen ? 'rotate-180' : ''}`} />
-              </CollapsibleTrigger>
-              <CollapsibleContent className="space-y-4">
-                <div className="bg-gray-50 rounded-lg p-4 text-sm leading-relaxed whitespace-pre-line">
-                  {t('pulseai.example.content')}
-                </div>
-                <p className="text-center text-gray-600 font-medium">
-                  {t('pulseai.example.footer')}
-                </p>
-              </CollapsibleContent>
-            </Collapsible>
+          <div className="flex flex-col bg-white rounded-xl shadow-lg p-6 border">
+            <div className="flex items-center gap-3 mb-4">
+              <MessageCircle className="w-6 h-6 text-blue-600" />
+              <h4 className="text-lg font-semibold">{t('pulseai.example.title')}</h4>
+            </div>
+            <div className="space-y-4 flex-grow">
+              <div className="bg-gray-50 rounded-lg p-4 text-sm leading-relaxed whitespace-pre-line">
+                {t('pulseai.example.content')}
+              </div>
+              <p className="text-center text-gray-600 font-medium">
+                {t('pulseai.example.footer')}
+              </p>
+            </div>
           </div>
         </div>
       </div>
