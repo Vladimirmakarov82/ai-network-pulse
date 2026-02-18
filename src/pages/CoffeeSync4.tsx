@@ -247,118 +247,136 @@ const CoffeeSync4: React.FC = () => {
         </div>
       </section>
 
-      <div className="container mx-auto px-4 py-12 space-y-12">
-        {/* Key Metrics Row */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div className="container mx-auto px-4 py-8 space-y-6">
+        {/* Compact Metrics Strip */}
+        <div className="grid grid-cols-4 gap-3">
           {[
             { label: 'Участников', value: '4', icon: Users, accent: 'text-pulse-green' },
-            { label: 'Слов произнесено', value: '~12 400', icon: Mic, accent: 'text-pulse-blue' },
-            { label: 'Инициатив / час', value: '6.2', icon: Zap, accent: 'text-pulse-orange' },
-            { label: 'Индекс энергетики', value: '8.4/10', icon: Target, accent: 'text-pulse-purple' },
+            { label: 'Слов', value: '~12 400', icon: Mic, accent: 'text-pulse-blue' },
+            { label: 'Инициатив/ч', value: '6.2', icon: Zap, accent: 'text-pulse-orange' },
+            { label: 'Энергия', value: '8.4', icon: Target, accent: 'text-pulse-purple' },
           ].map((metric, i) => (
-            <Card key={i} className="border-0 shadow-md text-center">
-              <CardContent className="pt-6 pb-4">
-                <metric.icon className={`w-6 h-6 mx-auto mb-2 ${metric.accent}`} />
-                <p className="text-2xl md:text-3xl font-bold">{metric.value}</p>
-                <p className="text-xs text-muted-foreground mt-1">{metric.label}</p>
+            <Card key={i} className="border-0 shadow-md">
+              <CardContent className="p-3 flex items-center gap-3">
+                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-foreground/5 to-foreground/10 flex items-center justify-center flex-shrink-0">
+                  <metric.icon className={`w-5 h-5 ${metric.accent}`} />
+                </div>
+                <div>
+                  <p className="text-xl font-bold leading-tight">{metric.value}</p>
+                  <p className="text-[10px] text-muted-foreground uppercase tracking-wider">{metric.label}</p>
+                </div>
               </CardContent>
             </Card>
           ))}
         </div>
 
-        {/* Emotional atmosphere */}
-        <Card className="border-0 shadow-lg bg-gradient-to-r from-pulse-green/5 via-pulse-blue/5 to-pulse-purple/5">
-          <CardContent className="p-6 md:p-8">
-            <h3 className="text-lg font-semibold mb-3">🌡 Атмосфера встречи</h3>
-            <p className="text-muted-foreground leading-relaxed">
-              Открытая, энергичная атмосфера с высоким уровнем доверия. Участники быстро перешли от формальных представлений к обсуждению реальных бизнес-вызовов, обмену инсайтами и совместному поиску решений. Заметен сильный взаимный интерес к возможностям AI-автоматизации и оффлайн-нетворкинга. Уровень вовлечённости — выше среднего: каждый участник активно задавал вопросы и делился опытом.
-            </p>
-          </CardContent>
-        </Card>
-
-        {/* Two column: Sync Value Scores + Speech Distribution */}
-        <div className="grid md:grid-cols-2 gap-8">
-          {/* Sync Value Score */}
+        {/* Dense 3-column grid: Scores + Speech + Tags */}
+        <div className="grid md:grid-cols-3 gap-4">
+          {/* Sync Value Score — compact */}
           <Card className="border-0 shadow-lg">
-            <CardHeader>
-              <CardTitle className="text-lg flex items-center gap-2">
-                <Target className="w-5 h-5 text-pulse-green" />
-                Sync Value Score
-              </CardTitle>
-              <p className="text-xs text-muted-foreground">Оценка ценности участника для сети по 10-балльной шкале</p>
-            </CardHeader>
-            <CardContent>
-              <div className="flex justify-around">
+            <CardContent className="p-4">
+              <div className="flex items-center gap-2 mb-3">
+                <Target className="w-4 h-4 text-pulse-green" />
+                <h3 className="text-sm font-semibold">Sync Value Score</h3>
+              </div>
+              <div className="space-y-2.5">
                 {SYNC_SCORES.map((s) => (
-                  <ScoreRing key={s.name} score={s.score} gradient={s.color} name={s.name} />
+                  <div key={s.name} className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-pulse-green/20 to-pulse-blue/20 flex items-center justify-center flex-shrink-0">
+                      <span className="text-sm font-bold">{s.score}</span>
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-sm font-medium truncate">{s.name}</p>
+                      <div className="h-1.5 bg-muted rounded-full overflow-hidden mt-1">
+                        <div
+                          className={`h-full rounded-full bg-gradient-to-r ${s.color} transition-all duration-1000`}
+                          style={{ width: `${(s.score / 10) * 100}%` }}
+                        />
+                      </div>
+                    </div>
+                  </div>
                 ))}
               </div>
             </CardContent>
           </Card>
 
-          {/* Speech Distribution */}
+          {/* Speech Distribution — compact */}
           <Card className="border-0 shadow-lg">
-            <CardHeader>
-              <CardTitle className="text-lg flex items-center gap-2">
-                <Mic className="w-5 h-5 text-pulse-blue" />
-                Распределение речи
-              </CardTitle>
-              <p className="text-xs text-muted-foreground">Доля времени каждого участника</p>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              {SPEECH_DATA.map((s) => (
-                <div key={s.name}>
-                  <div className="flex justify-between text-sm mb-1">
-                    <span className="font-medium flex items-center gap-1.5">
-                      {s.name}
-                      {s.role === 'organizer' && <Crown className="w-3.5 h-3.5 text-amber-500" />}
+            <CardContent className="p-4">
+              <div className="flex items-center gap-2 mb-3">
+                <Mic className="w-4 h-4 text-pulse-blue" />
+                <h3 className="text-sm font-semibold">Распределение речи</h3>
+              </div>
+              <div className="space-y-2.5">
+                {SPEECH_DATA.map((s) => (
+                  <div key={s.name}>
+                    <div className="flex justify-between text-xs mb-1">
+                      <span className="font-medium flex items-center gap-1">
+                        {s.name}
+                        {s.role === 'organizer' && <Crown className="w-3 h-3 text-amber-500" />}
+                      </span>
+                      <span className="text-muted-foreground tabular-nums">{s.percent}%</span>
+                    </div>
+                    <div className="h-2 bg-muted rounded-full overflow-hidden">
+                      <div
+                        className="h-full rounded-full bg-gradient-to-r from-pulse-green to-pulse-blue transition-all duration-1000"
+                        style={{ width: `${s.percent}%` }}
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Tag Cloud — dynamic scattered layout */}
+          <Card className="border-0 shadow-lg overflow-hidden relative">
+            <div className="absolute inset-0 bg-gradient-to-br from-pulse-green/5 via-transparent to-pulse-purple/5" />
+            <CardContent className="p-4 relative">
+              <div className="flex items-center gap-2 mb-3">
+                <svg className="w-4 h-4 text-pulse-purple" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z" />
+                </svg>
+                <h3 className="text-sm font-semibold">Облако тегов</h3>
+              </div>
+              <div className="flex flex-wrap items-baseline justify-center gap-x-2 gap-y-1">
+                {TAG_CLOUD.map((tag, i) => {
+                  const rotation = i % 3 === 0 ? '-rotate-2' : i % 3 === 1 ? 'rotate-1' : '';
+                  return (
+                    <span
+                      key={i}
+                      className={`${tag.size} ${tag.color} font-semibold ${rotation} hover:scale-110 transition-transform cursor-default inline-block`}
+                      style={{ opacity: 0.7 + Math.random() * 0.3 }}
+                    >
+                      {tag.text}
                     </span>
-                    <span className="text-muted-foreground">{s.percent}%</span>
-                  </div>
-                  <div className="h-3 bg-muted rounded-full overflow-hidden">
-                    <div
-                      className="h-full rounded-full bg-gradient-to-r from-pulse-green to-pulse-blue transition-all duration-1000"
-                      style={{ width: `${s.percent}%` }}
-                    />
-                  </div>
-                </div>
-              ))}
+                  );
+                })}
+              </div>
             </CardContent>
           </Card>
         </div>
 
-        {/* Tag Cloud */}
+        {/* Top-3 requests — horizontal compact */}
         <Card className="border-0 shadow-lg">
-          <CardHeader>
-            <CardTitle className="text-lg">☁️ Облако тегов встречи</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 py-4">
-              {TAG_CLOUD.map((tag, i) => (
-                <span key={i} className={`${tag.size} ${tag.color} font-medium opacity-90 hover:opacity-100 transition-opacity cursor-default`}>
-                  {tag.text}
-                </span>
+          <CardContent className="p-4">
+            <div className="flex items-center gap-2 mb-3">
+              <svg className="w-5 h-5 text-pulse-orange" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="12" r="10" />
+                <path d="m9 12 2 2 4-4" />
+              </svg>
+              <h3 className="text-sm font-semibold">Топ-3 самых чётких запроса</h3>
+            </div>
+            <div className="grid md:grid-cols-3 gap-3">
+              {TOP_REQUESTS.map((req, i) => (
+                <div key={i} className="flex gap-2.5 items-start p-3 rounded-lg bg-gradient-to-br from-foreground/[0.02] to-foreground/[0.05] border border-border/50">
+                  <div className="w-6 h-6 rounded-full bg-gradient-to-br from-pulse-orange to-pulse-pink flex items-center justify-center text-white font-bold text-[10px] flex-shrink-0 mt-0.5">
+                    {i + 1}
+                  </div>
+                  <p className="text-xs text-muted-foreground leading-relaxed">{req}</p>
+                </div>
               ))}
             </div>
-          </CardContent>
-        </Card>
-
-        {/* Top-3 requests */}
-        <Card className="border-0 shadow-lg">
-          <CardHeader>
-            <CardTitle className="text-lg flex items-center gap-2">
-              🎯 Топ-3 самых чётких запроса
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-3">
-            {TOP_REQUESTS.map((req, i) => (
-              <div key={i} className="flex gap-3 items-start">
-                <div className="w-7 h-7 rounded-full bg-gradient-to-br from-pulse-green to-pulse-blue flex items-center justify-center text-white font-bold text-xs flex-shrink-0 mt-0.5">
-                  {i + 1}
-                </div>
-                <p className="text-sm text-muted-foreground">{req}</p>
-              </div>
-            ))}
           </CardContent>
         </Card>
 
