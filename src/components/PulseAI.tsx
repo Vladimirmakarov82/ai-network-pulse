@@ -3,7 +3,7 @@ import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Users, Zap, Globe, DollarSign } from 'lucide-react';
+import { Users, Network, Wallet } from 'lucide-react';
 
 const PulseAI: React.FC = () => {
   const { language } = useLanguage();
@@ -105,28 +105,28 @@ const PulseAI: React.FC = () => {
                 desc: language === 'ru'
                   ? 'Системно привлекайте участников через единую инфраструктуру Pulse'
                   : 'Systematically attract participants through Pulse infrastructure',
-                color: 'bg-pulse-green/10 text-pulse-green',
+                gradient: 'from-emerald-500 to-teal-400',
               },
               {
-                icon: <Globe className="w-6 h-6" />,
+                icon: <Network className="w-6 h-6" />,
                 title: language === 'ru' ? 'Контакты другого уровня' : 'Higher-level contacts',
                 desc: language === 'ru'
                   ? 'Находите контакты более высокого уровня из других клубов и сообществ'
                   : 'Find higher-level contacts from other clubs and communities',
-                color: 'bg-pulse-blue/10 text-pulse-blue',
+                gradient: 'from-blue-500 to-cyan-400',
               },
               {
-                icon: <DollarSign className="w-6 h-6" />,
+                icon: <Wallet className="w-6 h-6" />,
                 title: language === 'ru' ? 'Пассивный доход' : 'Passive income',
                 desc: language === 'ru'
                   ? 'Получайте пассивный доход от партнёрской программы'
                   : 'Earn passive income from the partner program',
-                color: 'bg-pulse-orange/10 text-pulse-orange',
+                gradient: 'from-orange-500 to-amber-400',
               },
             ].map((item, i) => (
               <Card key={i} className="border-0 shadow-md hover:shadow-lg transition-shadow">
                 <CardContent className="p-6 text-center">
-                  <div className={`w-12 h-12 mx-auto mb-4 rounded-full ${item.color} flex items-center justify-center`}>
+                  <div className={`w-12 h-12 mx-auto mb-4 rounded-2xl bg-gradient-to-br ${item.gradient} shadow-lg flex items-center justify-center text-white`}>
                     {item.icon}
                   </div>
                   <h4 className="font-semibold mb-2">{item.title}</h4>

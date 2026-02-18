@@ -2,34 +2,38 @@
 import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Card, CardContent } from '@/components/ui/card';
+import { Mic, Brain, ShieldOff } from 'lucide-react';
 
 const About: React.FC = () => {
   const { language } = useLanguage();
 
   const features = [
     {
-      icon: '🎙️',
+      icon: <Mic className="w-7 h-7" />,
       title: language === 'ru' ? 'Живые данные с встреч' : 'Live meeting data',
       description: language === 'ru'
         ? 'На встречах участники рассказывают о себе, делятся запросами. Организатор записывает на диктофон — так формируется уникальная, социально подтверждённая информация.'
         : 'Participants share about themselves and their needs at meetings. The organizer records it — creating unique, socially verified information.',
-      color: 'pulse-green',
+      gradient: 'from-emerald-500 to-teal-400',
+      shadow: 'shadow-emerald-500/20',
     },
     {
-      icon: '🧠',
+      icon: <Brain className="w-7 h-7" />,
       title: language === 'ru' ? 'Pulsia всё помнит' : 'Pulsia remembers everything',
       description: language === 'ru'
         ? 'В отличие от соцсетей, где данные устаревают, Pulsia работает с актуальной информацией. Чем чаще участник приходит — тем точнее рекомендации.'
         : 'Unlike social media where data gets stale, Pulsia works with current information. The more a participant attends — the more precise the matches.',
-      color: 'pulse-blue',
+      gradient: 'from-blue-500 to-cyan-400',
+      shadow: 'shadow-blue-500/20',
     },
     {
-      icon: '🚫',
+      icon: <ShieldOff className="w-7 h-7" />,
       title: language === 'ru' ? 'Нет интерфейса — и это фича' : 'No interface — and that\'s a feature',
       description: language === 'ru'
         ? 'Участники не могут искать людей по параметрам. Pulsia сама решает, кого с кем познакомить, потому что знает запросы и возможности каждого.'
         : 'Participants can\'t search for people by parameters. Pulsia decides who to connect, because she knows everyone\'s needs and capabilities.',
-      color: 'pulse-pink',
+      gradient: 'from-pink-500 to-rose-400',
+      shadow: 'shadow-pink-500/20',
     },
   ];
 
@@ -51,7 +55,7 @@ const About: React.FC = () => {
           {features.map((feature, index) => (
             <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 group">
               <CardContent className="p-8 text-center">
-                <div className={`w-16 h-16 mx-auto mb-6 rounded-full bg-${feature.color}/10 flex items-center justify-center text-3xl group-hover:scale-110 transition-transform duration-300`}>
+                <div className={`w-14 h-14 mx-auto mb-6 rounded-2xl bg-gradient-to-br ${feature.gradient} ${feature.shadow} shadow-lg flex items-center justify-center text-white group-hover:scale-110 group-hover:shadow-xl transition-all duration-300`}>
                   {feature.icon}
                 </div>
                 <h3 className="text-xl font-bold mb-4">
@@ -75,7 +79,7 @@ const About: React.FC = () => {
                 </h3>
                 <div className="grid md:grid-cols-3 gap-6 text-left">
                   <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 bg-pulse-green rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0">1</div>
+                    <div className="w-8 h-8 bg-gradient-to-br from-emerald-500 to-teal-400 rounded-lg flex items-center justify-center text-white font-bold text-sm flex-shrink-0 shadow-md">1</div>
                     <div>
                       <h4 className="font-semibold mb-2">{language === 'ru' ? 'CoffeeSync' : 'CoffeeSync'}</h4>
                       <p className="text-sm text-muted-foreground">
@@ -86,7 +90,7 @@ const About: React.FC = () => {
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 bg-pulse-blue rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0">2</div>
+                    <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-cyan-400 rounded-lg flex items-center justify-center text-white font-bold text-sm flex-shrink-0 shadow-md">2</div>
                     <div>
                       <h4 className="font-semibold mb-2">{language === 'ru' ? 'Pulsia анализирует' : 'Pulsia analyzes'}</h4>
                       <p className="text-sm text-muted-foreground">
@@ -97,7 +101,7 @@ const About: React.FC = () => {
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 bg-pulse-pink rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0">3</div>
+                    <div className="w-8 h-8 bg-gradient-to-br from-pink-500 to-rose-400 rounded-lg flex items-center justify-center text-white font-bold text-sm flex-shrink-0 shadow-md">3</div>
                     <div>
                       <h4 className="font-semibold mb-2">{language === 'ru' ? 'Целевое знакомство' : 'Targeted match'}</h4>
                       <p className="text-sm text-muted-foreground">
