@@ -430,9 +430,9 @@ const CoffeeSync4: React.FC = () => {
             <Button
               size="lg"
               className="bg-gradient-to-r from-pulse-green to-pulse-blue text-white hover:opacity-90"
-              onClick={() => navigate('/')}
+              onClick={() => window.open('https://t.me/+txlodGJtXWFjM2Uy', '_blank')}
             >
-              Узнать больше о Pulse Community
+              Присоединиться
             </Button>
           </CardContent>
         </Card>
