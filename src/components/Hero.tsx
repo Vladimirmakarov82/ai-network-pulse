@@ -31,13 +31,13 @@ const Hero: React.FC = () => {
       <div className="container mx-auto px-4">
         <div className="text-center max-w-4xl mx-auto">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 bg-pulse-green/10 text-pulse-green px-4 py-2 rounded-full text-sm font-medium mb-8 animate-fade-in">
-            <div className="w-2 h-2 bg-pulse-green rounded-full animate-pulse-glow"></div>
+          <div className="inline-flex items-center gap-2 bg-pulse-green/10 text-pulse-green px-4 py-2 rounded-full text-xs font-medium uppercase tracking-widest mb-8 animate-fade-in">
+            <div className="w-1.5 h-1.5 bg-pulse-green rounded-full animate-pulse-glow"></div>
             {language === 'ru' ? 'Протокол работает' : 'Protocol is live'}
           </div>
 
           {/* Main Heading */}
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight animate-fade-in">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-[0.95] animate-fade-in tracking-tighter">
             <span className="gradient-text">
               {language === 'ru'
                 ? 'Нетворкинг эффективнее в 100 раз'
@@ -46,24 +46,24 @@ const Hero: React.FC = () => {
           </h1>
 
           {/* Subtitle */}
-          <p className="text-xl md:text-2xl text-muted-foreground mb-4 font-medium animate-fade-in">
+          <p className="text-lg md:text-xl text-muted-foreground mb-4 font-medium animate-fade-in tracking-tight">
             {language === 'ru'
               ? 'Pulse Meeting Intelligence Protocol'
               : 'Pulse Meeting Intelligence Protocol'}
           </p>
 
           {/* Description */}
-          <p className="text-lg text-muted-foreground/80 mb-10 max-w-2xl mx-auto animate-fade-in leading-relaxed">
+          <p className="text-base text-muted-foreground/70 mb-12 max-w-2xl mx-auto animate-fade-in leading-relaxed font-inter">
             {language === 'ru'
               ? 'Нейронка Pulsia анализирует оффлайн-встречи и находит идеальные совпадения между участниками — клиентов, партнёров, инвесторов. Без интерфейса, без профилей — только живые данные.'
               : 'Pulsia AI analyzes offline meetings and finds perfect matches between participants — clients, partners, investors. No interface, no profiles — only live data.'}
           </p>
 
           {/* Counter */}
-          <div className="mb-10 animate-fade-in">
-            <div className="inline-flex items-baseline gap-2">
-              <span className="text-5xl md:text-6xl font-bold gradient-text">{count}+</span>
-              <span className="text-lg text-muted-foreground">
+          <div className="mb-12 animate-fade-in">
+            <div className="inline-flex items-baseline gap-3">
+              <span className="text-6xl md:text-7xl font-bold gradient-text tracking-tighter">{count}+</span>
+              <span className="text-base text-muted-foreground font-inter">
                 {language === 'ru'
                   ? 'предпринимателей с оборотом $2–30M'
                   : 'entrepreneurs with $2–30M revenue'}

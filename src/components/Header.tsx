@@ -31,7 +31,7 @@ const Header: React.FC = () => {
             <div className="w-8 h-8 rounded-full bg-gradient-to-r from-pulse-green to-pulse-blue flex items-center justify-center">
               <span className="text-white font-bold text-sm">P</span>
             </div>
-            <span className="text-xl font-bold gradient-text">Pulse</span>
+            <span className="text-xl font-bold font-display tracking-tight">Pulse</span>
           </div>
 
           <nav className="hidden md:flex items-center gap-8">
@@ -39,7 +39,7 @@ const Header: React.FC = () => {
               <button
                 key={item.href}
                 onClick={() => scrollToSection(item.href)}
-                className="text-muted-foreground hover:text-foreground font-medium transition-colors"
+                className="text-sm text-muted-foreground hover:text-foreground font-medium transition-colors tracking-tight"
               >
                 {item.label}
               </button>
