@@ -223,29 +223,20 @@ const CoffeeSync4: React.FC = () => {
         </div>
       </header>
 
-      {/* Hero */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-foreground/95 to-foreground/80 z-10" />
-        <img
-          src={groupPhoto}
-          alt="CoffeeSync Canggu #4 participants"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-        <div className="relative z-20 container mx-auto px-4 py-20 md:py-28 text-center">
-          <Badge className="mb-4 bg-pulse-green/20 text-pulse-green border-pulse-green/30 text-sm">
-            ☕ Meeting Dashboard
-          </Badge>
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
+      {/* Compact Header Strip */}
+      <div className="container mx-auto px-4 py-4">
+        <div className="flex items-center justify-between gap-4 flex-wrap">
+          <h1 className="text-xl md:text-2xl font-bold">
             CoffeeSync Canggu <span className="gradient-text">#4</span>
           </h1>
-          <div className="flex flex-wrap justify-center gap-4 text-white/80 text-sm mt-6">
-            <span className="flex items-center gap-1.5"><Calendar className="w-4 h-4" /> Четверг, 11:00</span>
-            <span className="flex items-center gap-1.5"><MapPin className="w-4 h-4" /> Чангу, Бали</span>
-            <span className="flex items-center gap-1.5"><Users className="w-4 h-4" /> 4 участника</span>
-            <span className="flex items-center gap-1.5"><Clock className="w-4 h-4" /> ~90 мин</span>
+          <div className="flex flex-wrap gap-3 text-xs text-muted-foreground">
+            <span className="flex items-center gap-1"><Calendar className="w-3.5 h-3.5" /> Чт, 11:00</span>
+            <span className="flex items-center gap-1"><MapPin className="w-3.5 h-3.5" /> Чангу</span>
+            <span className="flex items-center gap-1"><Users className="w-3.5 h-3.5" /> 4</span>
+            <span className="flex items-center gap-1"><Clock className="w-3.5 h-3.5" /> ~90 мин</span>
           </div>
         </div>
-      </section>
+      </div>
 
       <div className="container mx-auto px-4 py-8 space-y-6">
         {/* Compact Metrics Strip */}
