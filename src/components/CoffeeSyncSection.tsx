@@ -6,16 +6,26 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Calendar, MapPin, Users, ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import groupPhoto from '@/assets/coffeesync4-group.jpg';
+import groupPhoto4 from '@/assets/coffeesync4-group.jpg';
+import groupPhoto5 from '@/assets/coffeesync5-group.jpg';
 
 const MEETINGS = [
+  {
+    id: 'canggu-5',
+    path: '/coffeesync/canggu-5',
+    title: 'CoffeeSync Canggu #5',
+    location: 'Чангу, Бали',
+    participants: 5,
+    image: groupPhoto5,
+    tags: ['Автоматизация', 'Нейронные сети', 'AI-агенты'],
+  },
   {
     id: 'canggu-4',
     path: '/coffeesync/canggu-4',
     title: 'CoffeeSync Canggu #4',
     location: 'Чангу, Бали',
     participants: 4,
-    image: groupPhoto,
+    image: groupPhoto4,
     tags: ['AI-автоматизация', 'Недвижимость', 'Системы управления'],
   },
 ];

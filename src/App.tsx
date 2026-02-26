@@ -9,6 +9,7 @@ import { HelmetProvider } from "react-helmet-async";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import CoffeeSync4 from "./pages/CoffeeSync4";
+import CoffeeSync5 from "./pages/CoffeeSync5";
 
 const queryClient = new QueryClient();
 
@@ -23,6 +24,7 @@ const App = () => (
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/coffeesync/canggu-4" element={<CoffeeSync4 />} />
+              <Route path="/coffeesync/canggu-5" element={<CoffeeSync5 />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
