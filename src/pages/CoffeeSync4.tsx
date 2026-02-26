@@ -1,5 +1,6 @@
 
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -208,6 +209,23 @@ const CoffeeSync4: React.FC = () => {
   const navigate = useNavigate();
 
   return (
+    <>
+      <Helmet>
+        <title>CoffeeSync Canggu #4 — Дашборд встречи | Pulse Community</title>
+        <meta name="description" content="Результаты CoffeeSync #4 в Canggu: 12 участников, AI-аналитика встречи, облако тегов и ключевые запросы предпринимателей." />
+        <link rel="canonical" href="https://ai-network-pulse.lovable.app/coffeesync/canggu-4" />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://ai-network-pulse.lovable.app/coffeesync/canggu-4" />
+        <meta property="og:title" content="CoffeeSync Canggu #4 — Дашборд встречи | Pulse Community" />
+        <meta property="og:description" content="Результаты CoffeeSync #4 в Canggu: 12 участников, AI-аналитика встречи, облако тегов и ключевые запросы предпринимателей." />
+        <meta property="og:image" content="https://ai-network-pulse.lovable.app/og-coffeesync4.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="640" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="CoffeeSync Canggu #4 — Дашборд встречи | Pulse Community" />
+        <meta name="twitter:description" content="Результаты CoffeeSync #4 в Canggu: 12 участников, AI-аналитика встречи, облако тегов и ключевые запросы предпринимателей." />
+        <meta name="twitter:image" content="https://ai-network-pulse.lovable.app/og-coffeesync4.png" />
+      </Helmet>
     <div className="min-h-screen bg-background">
       {/* Header */}
       <header className="sticky top-0 z-50 glass-effect border-b">
@@ -452,6 +470,7 @@ const CoffeeSync4: React.FC = () => {
         <p>Pulse Community © 2025 · CoffeeSync Canggu #4</p>
       </footer>
     </div>
+    </>
   );
 };
 
