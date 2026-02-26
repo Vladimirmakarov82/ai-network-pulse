@@ -4,7 +4,8 @@ import { Helmet } from 'react-helmet-async';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, Users, Clock, MapPin, Calendar, Mic, Zap, Target, ChevronDown, ChevronUp, Crown } from 'lucide-react';
+import { ArrowLeft, Users, Clock, MapPin, Calendar, Mic, Zap, Target, ChevronDown, ChevronUp, Crown, Share2 } from 'lucide-react';
+import { toast } from 'sonner';
 import { useNavigate } from 'react-router-dom';
 import groupPhoto from '@/assets/coffeesync4-group.jpg';
 
@@ -136,6 +137,22 @@ const ScoreRing: React.FC<{ score: number; gradient: string; name: string }> = (
 const ParticipantCard: React.FC<{ participant: Participant; isOrganizer?: boolean }> = ({ participant, isOrganizer }) => {
   const [expanded, setExpanded] = useState(false);
 
+  const handleShare = async () => {
+    const text = `${participant.name} — ${participant.tagline}\n\n` +
+      `💼 Опыт: ${participant.experience}\n\n` +
+      `🎯 Запрос: ${participant.request}\n\n` +
+      `Подробнее: https://ai-network-pulse.lovable.app/coffeesync/canggu-4`;
+
+    if (navigator.share) {
+      try {
+        await navigator.share({ title: participant.name, text });
+      } catch {}
+    } else {
+      await navigator.clipboard.writeText(text);
+      toast.success('Контакт скопирован в буфер обмена');
+    }
+  };
+
   return (
     <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
       <CardHeader className="pb-3">
@@ -157,9 +174,18 @@ const ParticipantCard: React.FC<{ participant: Participant; isOrganizer?: boolea
           </div>
           <Button
             variant="ghost"
+            size="icon"
+            onClick={handleShare}
+            title="Поделиться контактом"
+            className="shrink-0"
+          >
+            <Share2 className="w-4 h-4" />
+          </Button>
+          <Button
+            variant="ghost"
             size="sm"
             onClick={() => setExpanded(!expanded)}
-            className="ml-auto"
+            className="shrink-0"
           >
             {expanded ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
           </Button>
