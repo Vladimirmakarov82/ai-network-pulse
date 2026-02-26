@@ -136,21 +136,45 @@ const ScoreRing: React.FC<{ score: number; gradient: string; name: string }> = (
 
 const ParticipantCard: React.FC<{ participant: Participant; isOrganizer?: boolean }> = ({ participant, isOrganizer }) => {
   const [expanded, setExpanded] = useState(false);
+  const [showShareMenu, setShowShareMenu] = useState(false);
 
-  const handleShare = async () => {
-    const text = `${participant.name} — ${participant.tagline}\n\n` +
+  const getShareText = () => {
+    return `${participant.name} — ${participant.tagline}\n\n` +
       `💼 Опыт: ${participant.experience}\n\n` +
       `🎯 Запрос: ${participant.request}\n\n` +
       `Подробнее: https://ai-network-pulse.lovable.app/coffeesync/canggu-4`;
+  };
 
+  const handleShare = async () => {
     if (navigator.share) {
       try {
-        await navigator.share({ title: participant.name, text });
+        await navigator.share({ title: participant.name, text: getShareText() });
       } catch {}
     } else {
-      await navigator.clipboard.writeText(text);
-      toast.success('Контакт скопирован в буфер обмена');
+      setShowShareMenu(!showShareMenu);
     }
+  };
+
+  const shareToTelegram = () => {
+    const text = encodeURIComponent(getShareText());
+    window.open(`https://t.me/share/url?url=${encodeURIComponent('https://ai-network-pulse.lovable.app/coffeesync/canggu-4')}&text=${text}`, '_blank');
+    setShowShareMenu(false);
+  };
+
+  const shareToFacebook = () => {
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent('https://ai-network-pulse.lovable.app/coffeesync/canggu-4')}&quote=${encodeURIComponent(getShareText())}`, '_blank');
+    setShowShareMenu(false);
+  };
+
+  const shareToWhatsApp = () => {
+    const text = encodeURIComponent(getShareText());
+    window.open(`https://wa.me/?text=${text}`, '_blank');
+    setShowShareMenu(false);
+  };
+
+  const shareToLinkedIn = () => {
+    window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent('https://ai-network-pulse.lovable.app/coffeesync/canggu-4')}`, '_blank');
+    setShowShareMenu(false);
   };
 
   return (
@@ -172,15 +196,32 @@ const ParticipantCard: React.FC<{ participant: Participant; isOrganizer?: boolea
             </div>
             <p className="text-sm text-muted-foreground">{participant.role}</p>
           </div>
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={handleShare}
-            title="Поделиться контактом"
-            className="shrink-0"
-          >
-            <Share2 className="w-4 h-4" />
-          </Button>
+          <div className="relative shrink-0">
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={handleShare}
+              title="Поделиться контактом"
+            >
+              <Share2 className="w-4 h-4" />
+            </Button>
+            {showShareMenu && (
+              <div className="absolute right-0 top-full mt-1 z-50 bg-background border rounded-lg shadow-lg p-2 min-w-[180px] space-y-1">
+                <button onClick={shareToTelegram} className="w-full text-left px-3 py-2 text-sm rounded-md hover:bg-muted flex items-center gap-2">
+                  📨 Telegram
+                </button>
+                <button onClick={shareToWhatsApp} className="w-full text-left px-3 py-2 text-sm rounded-md hover:bg-muted flex items-center gap-2">
+                  💬 WhatsApp
+                </button>
+                <button onClick={shareToFacebook} className="w-full text-left px-3 py-2 text-sm rounded-md hover:bg-muted flex items-center gap-2">
+                  📘 Facebook
+                </button>
+                <button onClick={shareToLinkedIn} className="w-full text-left px-3 py-2 text-sm rounded-md hover:bg-muted flex items-center gap-2">
+                  💼 LinkedIn
+                </button>
+              </div>
+            )}
+          </div>
           <Button
             variant="ghost"
             size="sm"
