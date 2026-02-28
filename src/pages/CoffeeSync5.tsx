@@ -33,7 +33,7 @@ const TAG_CLOUD = [
 
 const SPEECH_DATA = [
   { name: 'Владимир Макаров', percent: 42, role: 'organizer' },
-  { name: 'Дарья', percent: 23, role: 'participant' },
+  { name: 'Дарья Жмуд', percent: 23, role: 'participant' },
   { name: 'Алексей Чулков', percent: 20, role: 'participant' },
   { name: 'Алина Жажина', percent: 10, role: 'participant' },
   { name: 'Алексей Скопин', percent: 4, role: 'participant' },
@@ -46,7 +46,7 @@ const TOP_REQUESTS = [
 ];
 
 const SYNC_SCORES = [
-  { name: 'Дарья', score: 9.5, color: 'from-green-400 to-emerald-500' },
+  { name: 'Дарья Жмуд', score: 9.5, color: 'from-green-400 to-emerald-500' },
   { name: 'Алексей Чулков', score: 8.9, color: 'from-blue-400 to-cyan-500' },
   { name: 'Алина Жажина', score: 7.1, color: 'from-orange-400 to-amber-500' },
   { name: 'Алексей Скопин', score: 6.5, color: 'from-purple-400 to-violet-500' },
@@ -67,7 +67,7 @@ interface Participant {
 
 const PARTICIPANTS: Participant[] = [
   {
-    name: 'Дарья',
+    name: 'Дарья Жмуд',
     role: 'Участник',
     tagline: 'Специалист по автоматизации, которая не продаёт инструменты, а переводит компании на новую модель бизнеса через AI, сохраняя прибыль вместо сокращения костков.',
     experience: 'Руководитель студии (видеопродакшн или аналогичного направления). Занимается внедрением AI-решений для автоматизации контента и процессов в различных компаниях.',
@@ -485,7 +485,7 @@ const CoffeeSync5: React.FC = () => {
             />
             <CardContent className="p-4 text-center">
               <p className="text-sm text-muted-foreground">
-                Слева направо: Алина Жажина, Дарья, Алексей Чулков, Владимир Макаров, Алексей Скопин
+                Слева направо: Алина Жажина, Дарья Жмуд, Алексей Чулков, Владимир Макаров, Алексей Скопин
               </p>
             </CardContent>
           </Card>
