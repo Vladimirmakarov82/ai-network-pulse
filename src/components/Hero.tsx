@@ -52,12 +52,7 @@ const Hero: React.FC = () => {
               : 'Pulse Meeting Intelligence Protocol'}
           </p>
 
-          {/* Description */}
-          <p className="text-base text-muted-foreground/70 mb-12 max-w-2xl mx-auto animate-fade-in leading-relaxed font-inter">
-            {language === 'ru'
-              ? 'Нейронка Pulsia анализирует оффлайн-встречи и находит идеальные совпадения между участниками — клиентов, партнёров, инвесторов. Без интерфейса, без профилей — только живые данные.'
-              : 'Pulsia AI analyzes offline meetings and finds perfect matches between participants — clients, partners, investors. No interface, no profiles — only live data.'}
-          </p>
+          {/* Description removed */}
 
           {/* Counter */}
           <div className="mb-12 animate-fade-in">
