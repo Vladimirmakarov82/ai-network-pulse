@@ -52,12 +52,7 @@ const Hero: React.FC = () => {
               : 'Pulse Meeting Intelligence Protocol'}
           </p>
 
-          {/* Description */}
-          <p className="text-base text-muted-foreground/70 mb-12 max-w-2xl mx-auto animate-fade-in leading-relaxed font-inter">
-            {language === 'ru'
-              ? 'Нейронка Pulsia анализирует оффлайн-встречи и находит идеальные совпадения между участниками — клиентов, партнёров, инвесторов. Без интерфейса, без профилей — только живые данные.'
-              : 'Pulsia AI analyzes offline meetings and finds perfect matches between participants — clients, partners, investors. No interface, no profiles — only live data.'}
-          </p>
+          {/* Description removed */}
 
           {/* Counter */}
           <div className="mb-12 animate-fade-in">
@@ -89,10 +84,10 @@ const Hero: React.FC = () => {
           {/* Key concepts */}
           <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
-              { icon: <Brain className="w-5 h-5" />, label: language === 'ru' ? 'ИИ Pulsia' : 'Pulsia AI', sub: language === 'ru' ? 'помнит всё' : 'remembers all', gradient: 'from-violet-500 to-purple-400' },
-              { icon: <Coffee className="w-5 h-5" />, label: 'CoffeeSync', sub: language === 'ru' ? 'каждый четверг 11:00' : 'every Thursday 11 AM', gradient: 'from-amber-500 to-orange-400' },
-              { icon: <Globe className="w-5 h-5" />, label: language === 'ru' ? 'Глобальная сеть' : 'Global Network', sub: language === 'ru' ? 'один формат, все города' : 'one format, all cities', gradient: 'from-emerald-500 to-teal-400' },
-              { icon: <Crosshair className="w-5 h-5" />, label: language === 'ru' ? '1 знакомство/нед' : '1 match/week', sub: language === 'ru' ? 'целевое от Pulsia' : 'targeted by Pulsia', gradient: 'from-blue-500 to-cyan-400' },
+              { icon: <Brain className="w-5 h-5" />, label: language === 'ru' ? 'ИИ Pulsia' : 'Pulsia AI', sub: language === 'ru' ? 'анализирует встречи' : 'analyzes meetings', gradient: 'from-violet-500 to-purple-400' },
+              { icon: <Coffee className="w-5 h-5" />, label: 'CoffeeSync', sub: language === 'ru' ? 'формат бизнес-завтраков' : 'business breakfast format', gradient: 'from-amber-500 to-orange-400' },
+              { icon: <Globe className="w-5 h-5" />, label: language === 'ru' ? 'Клубы и комьюнити' : 'Clubs & Communities', sub: language === 'ru' ? 'единая платформа' : 'unified platform', gradient: 'from-emerald-500 to-teal-400' },
+              { icon: <Crosshair className="w-5 h-5" />, label: language === 'ru' ? 'Профили участников' : 'Participant profiles', sub: language === 'ru' ? 'на основе интро' : 'based on intros', gradient: 'from-blue-500 to-cyan-400' },
             ].map((item, i) => (
               <div key={i} className="flex flex-col items-center p-5 rounded-2xl bg-card border border-border/50 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
                 <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${item.gradient} flex items-center justify-center text-white mb-3 shadow-lg`}>
