@@ -3,7 +3,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
-import PulseCardDemo from '@/components/PulseCardDemo';
+import PulseFeedDemo from '@/components/PulseFeedDemo';
 import ProductLayers from '@/components/ProductLayers';
 import ClubConnect from '@/components/ClubConnect';
 import Footer from '@/components/Footer';
@@ -26,7 +26,7 @@ const Index = () => {
       <div className="min-h-screen bg-background">
         <Header />
         <Hero />
-        <PulseCardDemo />
+        <PulseFeedDemo />
         <ProductLayers />
         <ClubConnect />
         <Footer />
