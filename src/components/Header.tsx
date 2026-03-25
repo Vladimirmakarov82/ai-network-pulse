@@ -52,8 +52,8 @@ const Header: React.FC = () => {
       <div className="container mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center gap-2.5 cursor-pointer" onClick={() => navigate('/')}>
-          <div className="w-7 h-7 rounded-lg bg-foreground flex items-center justify-center">
-            <span className="text-primary-foreground font-bold text-xs">P</span>
+          <div className="w-7 h-7 rounded-lg bg-accent flex items-center justify-center">
+            <span className="text-accent-foreground font-bold text-xs">P</span>
           </div>
           <span className="text-lg font-semibold tracking-tight" style={{ fontFamily: "'DM Sans', sans-serif" }}>
             Pulse
@@ -78,7 +78,7 @@ const Header: React.FC = () => {
           <LanguageToggle />
           <Button
             size="sm"
-            className="bg-foreground text-primary-foreground hover:bg-foreground/90 text-[13px] font-medium px-5 rounded-lg"
+            className="bg-accent text-accent-foreground hover:bg-accent/90 text-[13px] font-semibold px-5 rounded-lg"
             onClick={scrollToConnect}
           >
             {ru ? 'Подключить клуб' : 'Connect club'}
@@ -107,7 +107,7 @@ const Header: React.FC = () => {
               </button>
             ))}
             <Button
-              className="bg-foreground text-primary-foreground hover:bg-foreground/90 font-medium mt-2"
+              className="bg-accent text-accent-foreground hover:bg-accent/90 font-semibold mt-2"
               onClick={scrollToConnect}
             >
               {ru ? 'Подключить клуб' : 'Connect club'}

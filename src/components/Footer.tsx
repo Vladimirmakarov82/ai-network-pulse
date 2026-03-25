@@ -11,10 +11,9 @@ const Footer: React.FC = () => {
     <footer className="border-t border-border py-12">
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-          {/* Logo + tagline */}
           <div className="flex items-center gap-3">
-            <div className="w-7 h-7 rounded-lg bg-foreground flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-xs">P</span>
+            <div className="w-7 h-7 rounded-lg bg-accent flex items-center justify-center">
+              <span className="text-accent-foreground font-bold text-xs">P</span>
             </div>
             <div>
               <span className="text-sm font-semibold" style={{ fontFamily: "'DM Sans', sans-serif" }}>Pulse</span>
@@ -24,20 +23,19 @@ const Footer: React.FC = () => {
             </div>
           </div>
 
-          {/* Links */}
           <div className="flex items-center gap-6">
             <a
               href="https://t.me/pulsecommunityopenrus"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              className="text-sm text-muted-foreground hover:text-accent transition-colors"
               style={{ fontFamily: "'DM Sans', sans-serif" }}
             >
               Telegram
             </a>
             <a
               href="mailto:hello@pulse.community"
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              className="text-sm text-muted-foreground hover:text-accent transition-colors"
               style={{ fontFamily: "'DM Sans', sans-serif" }}
             >
               hello@pulse.community
