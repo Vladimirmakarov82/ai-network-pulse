@@ -14,7 +14,8 @@ const Header: React.FC = () => {
   const ru = language === 'ru';
 
   const navItems = [
-    { label: ru ? 'Продукт' : 'Product', href: '#pulse-card', type: 'anchor' as const },
+    { label: ru ? 'Главная' : 'Home', href: '/', type: 'route' as const },
+    { label: ru ? 'Как это работает' : 'How it works', href: '#products', type: 'anchor' as const },
     { label: 'CoffeeSync', href: '/coffeesync', type: 'route' as const },
   ];
 
@@ -34,28 +35,15 @@ const Header: React.FC = () => {
     setIsMenuOpen(false);
   };
 
-  const scrollToConnect = () => {
-    const el = document.querySelector('#how-to-connect');
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    } else {
-      navigate('/');
-      setTimeout(() => {
-        document.querySelector('#how-to-connect')?.scrollIntoView({ behavior: 'smooth' });
-      }, 100);
-    }
-    setIsMenuOpen(false);
-  };
-
   return (
     <header className="fixed top-0 left-0 right-0 z-50 glass-header">
       <div className="container mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center gap-2.5 cursor-pointer" onClick={() => navigate('/')}>
-          <div className="w-7 h-7 rounded-lg bg-accent flex items-center justify-center">
-            <span className="text-accent-foreground font-bold text-xs">P</span>
+          <div className="w-8 h-8 rounded-full bg-accent flex items-center justify-center">
+            <span className="text-accent-foreground font-bold text-sm">P</span>
           </div>
-          <span className="text-lg font-semibold tracking-tight" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+          <span className="text-lg font-bold tracking-tight">
             Pulse
           </span>
         </div>
@@ -66,7 +54,7 @@ const Header: React.FC = () => {
             <button
               key={item.href}
               onClick={() => handleNav(item)}
-              className="text-[13px] text-muted-foreground hover:text-foreground font-medium transition-colors"
+              className="text-sm text-muted-foreground hover:text-foreground font-medium transition-colors"
             >
               {item.label}
             </button>
@@ -78,10 +66,10 @@ const Header: React.FC = () => {
           <LanguageToggle />
           <Button
             size="sm"
-            className="bg-accent text-accent-foreground hover:bg-accent/90 text-[13px] font-semibold px-5 rounded-lg"
-            onClick={scrollToConnect}
+            className="bg-accent text-accent-foreground hover:bg-accent/90 text-sm font-semibold px-5 rounded-full"
+            onClick={() => window.open('https://t.me/pulsecommunityopenrus', '_blank')}
           >
-            {ru ? 'Подключить клуб' : 'Connect club'}
+            Telegram
           </Button>
         </div>
 
@@ -107,10 +95,10 @@ const Header: React.FC = () => {
               </button>
             ))}
             <Button
-              className="bg-accent text-accent-foreground hover:bg-accent/90 font-semibold mt-2"
-              onClick={scrollToConnect}
+              className="bg-accent text-accent-foreground hover:bg-accent/90 font-semibold mt-2 rounded-full"
+              onClick={() => window.open('https://t.me/pulsecommunityopenrus', '_blank')}
             >
-              {ru ? 'Подключить клуб' : 'Connect club'}
+              Telegram
             </Button>
           </div>
         </nav>
