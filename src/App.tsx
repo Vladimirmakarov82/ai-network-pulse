@@ -24,6 +24,7 @@ const App = () => (
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Index />} />
+              <Route path="/coffeesync" element={<CoffeeSync />} />
               <Route path="/coffeesync/canggu-4" element={<CoffeeSync4 />} />
               <Route path="/coffeesync/canggu-5" element={<CoffeeSync5 />} />
               <Route path="*" element={<NotFound />} />
