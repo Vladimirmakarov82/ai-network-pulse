@@ -28,7 +28,6 @@ const Index = () => {
         <Hero />
         <About />
         <PulseAI />
-        <CoffeeSyncSection />
         <Footer />
       </div>
     </>
