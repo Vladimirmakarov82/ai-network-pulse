@@ -7,34 +7,24 @@ const PulseFeedDemo: React.FC = () => {
   const ru = language === 'ru';
 
   return (
-    <section id="pulse-card" className="py-20 md:py-32 warm-section">
+    <section id="pulse-card" className="py-20 md:py-28 warm-section">
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
-          {/* Two-column: text left, demo right */}
-          <div className="grid md:grid-cols-[1fr_1.5fr] gap-10 md:gap-14 items-center">
+          <div className="grid md:grid-cols-[1fr_1.4fr] gap-10 md:gap-14 items-center">
             {/* Left — description */}
             <div>
-              <p
-                className="text-xs font-semibold tracking-[0.2em] uppercase gradient-text mb-3"
-                style={{ fontFamily: "'DM Sans', sans-serif" }}
-              >
+              <p className="text-xs font-semibold tracking-[0.2em] uppercase text-accent mb-3">
                 Pulse Feed
               </p>
-              <h2 className="text-3xl md:text-4xl mb-5 leading-tight">
+              <h2 className="text-3xl md:text-4xl font-bold mb-5 leading-tight text-foreground">
                 {ru ? 'Живая лента AI-визиток' : 'Live AI business card feed'}
               </h2>
-              <p
-                className="text-muted-foreground text-base leading-relaxed mb-6"
-                style={{ fontFamily: "'DM Sans', sans-serif" }}
-              >
+              <p className="text-muted-foreground text-base leading-relaxed mb-6">
                 {ru
                   ? 'Каждый участник получает AI-визитку с анализом осей ценности, продуктов и потенциальных совпадений в сети.'
                   : 'Each member gets an AI card with value axes analysis, products, and potential network matches.'}
               </p>
-              <p
-                className="text-sm text-muted-foreground leading-relaxed"
-                style={{ fontFamily: "'DM Sans', sans-serif" }}
-              >
+              <p className="text-sm text-muted-foreground leading-relaxed">
                 ☝️{' '}
                 {ru
                   ? 'Это рабочий прототип — прокрутите, нажмите на карточку, откройте профиль участника.'
@@ -43,16 +33,16 @@ const PulseFeedDemo: React.FC = () => {
             </div>
 
             {/* Right — browser window with iframe */}
-            <div className="rounded-2xl overflow-hidden shadow-2xl card-glow gradient-border bg-card">
+            <div className="rounded-2xl overflow-hidden shadow-2xl border border-border bg-background">
               {/* Browser chrome */}
-              <div className="flex items-center gap-2 px-4 py-3 bg-secondary/80 border-b border-border">
+              <div className="flex items-center gap-2 px-4 py-3 bg-secondary border-b border-border">
                 <div className="flex gap-1.5">
-                  <div className="w-3 h-3 rounded-full" style={{ background: 'hsl(0 70% 65%)' }} />
-                  <div className="w-3 h-3 rounded-full" style={{ background: 'hsl(45 80% 60%)' }} />
-                  <div className="w-3 h-3 rounded-full" style={{ background: 'hsl(140 60% 50%)' }} />
+                  <div className="w-3 h-3 rounded-full bg-red-400" />
+                  <div className="w-3 h-3 rounded-full bg-yellow-400" />
+                  <div className="w-3 h-3 rounded-full bg-green-400" />
                 </div>
                 <div className="flex-1 mx-4">
-                  <div className="bg-background/60 rounded-md px-3 py-1 text-xs text-muted-foreground text-center truncate" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                  <div className="bg-background rounded-md px-3 py-1 text-xs text-muted-foreground text-center truncate">
                     pulse.community/feed/coffeesync
                   </div>
                 </div>
@@ -62,7 +52,7 @@ const PulseFeedDemo: React.FC = () => {
               <iframe
                 src="/pulse_feed.html"
                 className="w-full border-0"
-                style={{ height: '600px' }}
+                style={{ height: '550px' }}
                 title="Pulse Feed Demo"
               />
             </div>

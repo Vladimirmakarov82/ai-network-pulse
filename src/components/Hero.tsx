@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { ArrowRight, Sparkles } from 'lucide-react';
 
 const Hero: React.FC = () => {
   const { language } = useLanguage();
@@ -24,110 +23,129 @@ const Hero: React.FC = () => {
 
   return (
     <section className="pt-32 pb-20 md:pt-44 md:pb-32 relative overflow-hidden hero-gradient">
-      {/* Decorative orbs */}
-      <div className="absolute top-20 -left-32 w-96 h-96 rounded-full bg-accent/5 blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-80 h-80 rounded-full bg-accent/8 blur-3xl pointer-events-none" />
-      <div className="absolute top-40 right-1/4 w-64 h-64 rounded-full bg-yellow-200/10 blur-3xl pointer-events-none" />
-
       <div className="container mx-auto px-6 relative">
         <div className="max-w-4xl mx-auto text-center">
           {/* Badge */}
           <div
-            className="inline-flex items-center gap-2 gradient-border rounded-full px-5 py-2 mb-10 opacity-0 animate-fade-up bg-card/80 backdrop-blur-sm"
+            className="inline-flex items-center gap-2 rounded-full px-5 py-2 mb-10 border border-border bg-background opacity-0 animate-fade-up"
             style={{ animationDelay: '0ms' }}
           >
-            <Sparkles className="w-3.5 h-3.5 text-accent" />
-            <span className="text-xs font-semibold text-muted-foreground tracking-wide" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-              {ru ? 'Инфраструктура для бизнес-клубов' : 'Infrastructure for business clubs'}
+            <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+            <span className="text-xs font-semibold text-accent tracking-wider uppercase">
+              {ru ? 'Протокол запущен' : 'Protocol is live'}
             </span>
           </div>
 
-          {/* Heading */}
+          {/* Big rainbow heading */}
           <h1
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.05] mb-8 opacity-0 animate-fade-up"
+            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black leading-[0.95] mb-8 opacity-0 animate-fade-up rainbow-text"
             style={{ animationDelay: '120ms' }}
           >
             {ru ? (
               <>
-                Делаем участников{' '}
-                <span className="gradient-text italic">видимыми</span>
+                Нетворкинг 100×
                 <br />
-                за пределами чата
+                эффективнее
               </>
             ) : (
               <>
-                Making members{' '}
-                <span className="gradient-text italic">visible</span>
+                Networking 100×
                 <br />
-                beyond the chat
+                more effective
               </>
             )}
           </h1>
 
-          {/* Sub */}
+          {/* Subtitle */}
           <p
-            className="text-lg md:text-xl text-muted-foreground mb-10 leading-relaxed max-w-2xl mx-auto opacity-0 animate-fade-up"
-            style={{ fontFamily: "'DM Sans', sans-serif", animationDelay: '240ms' }}
+            className="text-base md:text-lg font-semibold text-foreground mb-3 opacity-0 animate-fade-up"
+            style={{ animationDelay: '240ms' }}
+          >
+            Pulse Meeting Intelligence Protocol
+          </p>
+          <p
+            className="text-sm md:text-base text-muted-foreground mb-12 leading-relaxed max-w-xl mx-auto opacity-0 animate-fade-up"
+            style={{ animationDelay: '320ms' }}
           >
             {ru
-              ? 'Pulse — инфраструктурный слой поверх бизнес-клубов. AI-визитки, лента участников, умные знакомства.'
-              : 'Pulse — an infrastructure layer on top of business clubs. AI cards, member feed, smart introductions.'}
+              ? 'Нейронка Pulsia анализирует оффлайн-встречи и находит идеальные совпадения между участниками — клиентов, партнёров, инвесторов. Без интерфейсов — только живые данные.'
+              : 'Pulsia AI analyzes offline meetings and finds perfect matches between participants — clients, partners, investors. No interface, no profiles — only live data.'}
           </p>
 
-          {/* CTA row */}
+          {/* Stats */}
           <div
-            className="flex flex-wrap items-center justify-center gap-4 mb-14 opacity-0 animate-fade-up"
-            style={{ animationDelay: '360ms' }}
+            className="flex items-center justify-center gap-3 mb-10 opacity-0 animate-fade-up"
+            style={{ animationDelay: '400ms' }}
+          >
+            <span className="text-5xl md:text-6xl font-black rainbow-text">
+              {count}+
+            </span>
+            <span className="text-sm md:text-base text-muted-foreground text-left leading-tight">
+              {ru ? 'предпринимателей' : 'entrepreneurs'}<br />
+              {ru ? 'с оборотом $2–30M' : 'with $2–30M revenue'}
+            </span>
+          </div>
+
+          {/* CTA */}
+          <div
+            className="opacity-0 animate-fade-up"
+            style={{ animationDelay: '500ms' }}
           >
             <Button
               size="lg"
-              className="bg-accent text-accent-foreground hover:bg-accent/90 font-semibold px-8 py-6 text-base rounded-xl glow-accent"
-              style={{ fontFamily: "'DM Sans', sans-serif" }}
-              onClick={() => {
-                document.querySelector('#how-to-connect')?.scrollIntoView({ behavior: 'smooth' });
-              }}
+              variant="outline"
+              className="px-8 py-6 text-base font-semibold rounded-xl border-border hover:bg-secondary gap-3"
+              onClick={() => window.open('https://t.me/pulsecommunityopenrus', '_blank')}
             >
-              {ru ? 'Подключить комьюнити' : 'Connect your community'}
-              <ArrowRight className="w-4 h-4 ml-2" />
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" className="text-[#229ED9]">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
+              </svg>
+              {ru ? 'Вступить в Telegram' : 'Join Telegram'}
             </Button>
-            <button
-              onClick={() => document.querySelector('#pulse-card')?.scrollIntoView({ behavior: 'smooth' })}
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors underline underline-offset-4"
-              style={{ fontFamily: "'DM Sans', sans-serif" }}
-            >
-              {ru ? 'Смотреть демо ↓' : 'See demo ↓'}
-            </button>
           </div>
 
-          {/* Stats row */}
+          {/* Feature cards row */}
           <div
-            className="flex items-center justify-center gap-10 opacity-0 animate-fade-up"
-            style={{ animationDelay: '480ms' }}
+            className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16 opacity-0 animate-fade-up"
+            style={{ animationDelay: '600ms' }}
           >
-            <div className="text-center">
-              <span className="text-4xl md:text-5xl font-bold gradient-text" style={{ fontFamily: "'DM Serif Display', serif" }}>
-                {count}+
-              </span>
-              <p className="text-xs text-muted-foreground mt-1" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                {ru ? 'предпринимателей' : 'entrepreneurs'}
-              </p>
-            </div>
-            <div className="w-px h-10 bg-border" />
-            <div className="text-center">
-              <span className="text-4xl md:text-5xl font-bold" style={{ fontFamily: "'DM Serif Display', serif", color: 'hsl(var(--foreground))' }}>
-                $2–30M
-              </span>
-              <p className="text-xs text-muted-foreground mt-1" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                {ru ? 'оборот участников' : 'member revenue'}
-              </p>
-            </div>
-            <div className="w-px h-10 bg-border" />
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-              <span className="text-sm font-medium text-muted-foreground" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                +250 / {ru ? 'неделя' : 'week'}
-              </span>
-            </div>
+            {[
+              {
+                icon: '🧠',
+                color: 'bg-violet-100 text-violet-600',
+                title: 'Pulsia AI',
+                sub: ru ? 'помнит всё' : 'remembers all',
+              },
+              {
+                icon: '☕',
+                color: 'bg-orange-100 text-orange-600',
+                title: 'CoffeeSync',
+                sub: ru ? 'каждый четверг 11:00' : 'every Thursday 11 AM',
+              },
+              {
+                icon: '🌍',
+                color: 'bg-green-100 text-green-600',
+                title: ru ? 'Глобальная сеть' : 'Global Network',
+                sub: ru ? 'один формат, все города' : 'one format, all cities',
+              },
+              {
+                icon: '🎯',
+                color: 'bg-pink-100 text-pink-600',
+                title: ru ? '1 контакт/неделю' : '1 match/week',
+                sub: ru ? 'целевые от Pulsia' : 'targeted by Pulsia',
+              },
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="flex flex-col items-center gap-2 p-5 rounded-2xl border border-border bg-background hover:shadow-lg transition-shadow"
+              >
+                <div className={`w-10 h-10 rounded-xl ${item.color} flex items-center justify-center text-lg`}>
+                  {item.icon}
+                </div>
+                <span className="text-sm font-semibold text-foreground">{item.title}</span>
+                <span className="text-xs text-muted-foreground">{item.sub}</span>
+              </div>
+            ))}
           </div>
         </div>
       </div>

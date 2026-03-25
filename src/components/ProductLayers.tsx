@@ -1,83 +1,59 @@
 
 import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { CreditCard, Brain, Sparkles, Lock } from 'lucide-react';
 
 const ProductLayers: React.FC = () => {
   const { language } = useLanguage();
   const ru = language === 'ru';
 
-  const products = [
+  const steps = [
     {
-      icon: <CreditCard className="w-5 h-5" />,
-      name: 'Pulse Card',
+      num: 1,
+      color: 'bg-accent text-accent-foreground',
+      title: ru ? 'Посещай завтрак' : 'Attend a breakfast',
       description: ru
-        ? 'AI-визитка участника: оси ценности, продукты, запросы и предложения. Навсегда закрепляет бренд первого клуба.'
-        : 'AI member card: value axes, products, requests and offers. Permanently carries the brand of the first club.',
-      gradient: 'from-accent/15 to-accent/5',
-      iconBg: 'bg-accent/15 text-accent',
+        ? 'Приходи на еженедельный завтрак, расскажи о себе. Организатор записывает встречу.'
+        : 'Attend a weekly breakfast, share about yourself. The organizer records the meeting.',
     },
     {
-      icon: <Brain className="w-5 h-5" />,
-      name: 'PulsIA',
+      num: 2,
+      color: 'bg-violet-500 text-white',
+      title: ru ? 'AI создаёт профиль' : 'AI builds your profile',
       description: ru
-        ? 'AI-агент для знакомств внутри клуба. Находит асимметрию в профилях и предлагает релевантные знакомства.'
-        : 'In-club AI networking agent. Finds profile asymmetries and suggests relevant introductions.',
-      gradient: 'from-violet-500/10 to-violet-500/5',
-      iconBg: 'bg-violet-500/15 text-violet-500',
+        ? 'AI обрабатывает аудио и создаёт глубокий профиль: цели, возможности, контекст.'
+        : 'The AI processes audio and builds a deep profile: goals, capabilities, context.',
     },
     {
-      icon: <Sparkles className="w-5 h-5" />,
-      name: 'PulsIA Plus',
-      badge: ru ? 'Скоро' : 'Soon',
+      num: 3,
+      color: 'bg-pink-500 text-white',
+      title: ru ? 'Получай знакомства' : 'Get introductions',
       description: ru
-        ? 'Кросс-комьюнити знакомства. Агент ищет контакты за пределами вашего клуба — среди всех подключённых сообществ.'
-        : 'Cross-community introductions. The agent finds contacts beyond your club — across all connected communities.',
-      gradient: 'from-rose-500/10 to-rose-500/5',
-      iconBg: 'bg-rose-500/15 text-rose-500',
+        ? 'Каждую неделю Pulsia находит одно знакомство, которое может изменить твой бизнес.'
+        : 'Every week Pulsia finds you one connection that can change your business.',
     },
   ];
 
   return (
-    <section id="products" className="py-20 md:py-32">
+    <section id="products" className="py-20 md:py-28">
       <div className="container mx-auto px-6">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
-            <p className="text-xs font-semibold tracking-[0.2em] uppercase gradient-text mb-3" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-              {ru ? 'Продукты' : 'Products'}
-            </p>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl">
-              {ru ? 'Три слоя платформы' : 'Three platform layers'}
+            <h2 className="text-3xl md:text-5xl font-bold rainbow-text inline-block mb-4">
+              {ru ? 'Как это работает' : 'How it works'}
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
-            {products.map((p, i) => (
-              <div
-                key={i}
-                className={`bg-gradient-to-br ${p.gradient} rounded-2xl p-7 md:p-8 card-glow gradient-border`}
-              >
-                <div className={`w-12 h-12 rounded-xl ${p.iconBg} flex items-center justify-center mb-6`}>
-                  {p.icon}
+          <div className="grid md:grid-cols-3 gap-8">
+            {steps.map((step) => (
+              <div key={step.num} className="text-center">
+                <div className={`w-12 h-12 rounded-2xl ${step.color} flex items-center justify-center mx-auto mb-5 text-lg font-bold`}>
+                  {step.num}
                 </div>
-
-                <div className="flex items-center gap-2 mb-3">
-                  <h3 className="text-xl" style={{ fontFamily: "'DM Serif Display', serif" }}>
-                    {p.name}
-                  </h3>
-                  {p.badge && (
-                    <span
-                      className="text-[10px] px-2.5 py-0.5 rounded-full bg-secondary text-muted-foreground font-medium flex items-center gap-1"
-                      style={{ fontFamily: "'DM Sans', sans-serif" }}
-                    >
-                      <Lock className="w-2.5 h-2.5" />
-                      {p.badge}
-                    </span>
-                  )}
-                </div>
-
-                <p className="text-sm text-muted-foreground leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                  {p.description}
+                <h3 className="text-lg font-bold mb-3 text-foreground">
+                  {step.title}
+                </h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {step.description}
                 </p>
               </div>
             ))}
