@@ -28,10 +28,10 @@ const About: React.FC = () => {
     },
     {
       icon: <ShieldOff className="w-7 h-7" />,
-      title: language === 'ru' ? 'Нет интерфейса — и это фича' : 'No interface — and that\'s a feature',
+      title: language === 'ru' ? 'Навигация по участникам' : 'Browse participants',
       description: language === 'ru'
-        ? 'Участники не могут искать людей по параметрам. Pulsia сама решает, кого с кем познакомить, потому что знает запросы и возможности каждого.'
-        : 'Participants can\'t search for people by parameters. Pulsia decides who to connect, because she knows everyone\'s needs and capabilities.',
+        ? 'Удобная навигация по участникам разных клубов и комьюнити. Находите нужных людей и изучайте их профили.'
+        : 'Easy navigation across participants from different clubs and communities. Find the right people and explore their profiles.',
       gradient: 'from-pink-500 to-rose-400',
       shadow: 'shadow-pink-500/20',
     },
