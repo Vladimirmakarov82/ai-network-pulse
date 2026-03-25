@@ -1,17 +1,15 @@
 
 import React, { useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Badge } from '@/components/ui/badge';
-import { Building2, MapPin, Globe, Briefcase, MessageCircle, Star, ChevronRight } from 'lucide-react';
+import { MapPin, MessageCircle, Star, ChevronRight } from 'lucide-react';
 
 const DEMO_PROFILES = [
   {
     id: 1,
     name: 'Алексей Петров',
     nameEn: 'Alexey Petrov',
-    avatar: 'АП',
+    initials: 'АП',
     club: 'SOYUZzniki',
-    clubColor: '#f97316',
     role: 'CEO · EdTech платформа',
     roleEn: 'CEO · EdTech platform',
     location: 'Дубай, ОАЭ',
@@ -24,15 +22,13 @@ const DEMO_PROFILES = [
     requestEn: 'Looking for content partner in Arabic language',
     offer: 'Готов делиться опытом выхода на рынок ОАЭ',
     offerEn: 'Can share UAE market entry experience',
-    matchScore: 87,
   },
   {
     id: 2,
     name: 'Мария Козлова',
     nameEn: 'Maria Kozlova',
-    avatar: 'МК',
+    initials: 'МК',
     club: 'SOYUZzniki',
-    clubColor: '#f97316',
     role: 'Основатель · Консалтинг',
     roleEn: 'Founder · Consulting',
     location: 'Бали, Индонезия',
@@ -45,15 +41,13 @@ const DEMO_PROFILES = [
     requestEn: 'Looking for strategic consulting clients',
     offer: 'Бесплатный аудит процессов для участников',
     offerEn: 'Free process audit for community members',
-    matchScore: 72,
   },
   {
     id: 3,
     name: 'Дмитрий Волков',
     nameEn: 'Dmitry Volkov',
-    avatar: 'ДВ',
+    initials: 'ДВ',
     club: 'SOYUZzniki',
-    clubColor: '#f97316',
     role: 'CTO · Fintech',
     roleEn: 'CTO · Fintech',
     location: 'Лиссабон, Португалия',
@@ -66,7 +60,6 @@ const DEMO_PROFILES = [
     requestEn: 'Looking for CFO with regulated markets experience',
     offer: 'Интеграция платежей для участников сети',
     offerEn: 'Payment integration for network members',
-    matchScore: 94,
   },
 ];
 
@@ -74,66 +67,65 @@ const PulseCardDemo: React.FC = () => {
   const { language } = useLanguage();
   const [activeCard, setActiveCard] = useState(0);
   const ru = language === 'ru';
-
   const profile = DEMO_PROFILES[activeCard];
 
   return (
-    <section id="pulse-card" className="py-20 bg-background">
-      <div className="container mx-auto px-4">
+    <section id="pulse-card" className="py-24 bg-secondary/30">
+      <div className="container mx-auto px-6">
         <div className="max-w-5xl mx-auto">
           {/* Section header */}
-          <div className="mb-4">
-            <Badge className="mb-4 bg-pulse-green/10 text-pulse-green border-pulse-green/30">
+          <div className="mb-12">
+            <p className="text-xs font-semibold tracking-[0.2em] uppercase text-accent mb-4" style={{ fontFamily: "'DM Sans', sans-serif" }}>
               Pulse Card
-            </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-3">
+            </p>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl mb-4">
               {ru ? 'Единый стандарт описания бизнес-участников' : 'A universal standard for business profiles'}
             </h2>
-            <p className="text-muted-foreground font-inter max-w-2xl text-base leading-relaxed">
+            <p className="text-muted-foreground text-base max-w-xl leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
               {ru
-                ? 'Обновляется автоматически на основе интро. Работает на любом нетворкинге. Рост 200–300 участников в неделю.'
-                : 'Auto-updated based on intros. Works at any networking event. Growing 200–300 participants per week.'}
+                ? 'Если пользователь создал Pulse Card в твоём комьюнити, он становится носителем бренда твоего комьюнити.'
+                : 'When a user creates a Pulse Card in your community, they become a carrier of your brand.'}
             </p>
           </div>
 
           {/* Card demo */}
-          <div className="mt-10 grid lg:grid-cols-[280px_1fr] gap-6">
-            {/* Left: profile list */}
-            <div className="flex lg:flex-col gap-2 overflow-x-auto lg:overflow-x-visible pb-2 lg:pb-0">
+          <div className="grid lg:grid-cols-[240px_1fr] gap-6">
+            {/* Left: profile selector */}
+            <div className="flex lg:flex-col gap-1.5 overflow-x-auto lg:overflow-visible pb-2 lg:pb-0">
               {DEMO_PROFILES.map((p, i) => (
                 <button
                   key={p.id}
                   onClick={() => setActiveCard(i)}
-                  className={`flex items-center gap-3 p-3 rounded-xl text-left transition-all duration-200 min-w-[220px] lg:min-w-0 ${
+                  className={`flex items-center gap-3 p-3 rounded-xl text-left transition-all duration-200 min-w-[200px] lg:min-w-0 ${
                     i === activeCard
-                      ? 'bg-card shadow-md border border-border/50'
-                      : 'hover:bg-muted/50'
+                      ? 'bg-card shadow-md ring-1 ring-border'
+                      : 'hover:bg-card/60'
                   }`}
                 >
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-pulse-green to-pulse-blue flex items-center justify-center text-white text-xs font-bold flex-shrink-0">
-                    {p.avatar}
+                  <div className="w-9 h-9 rounded-lg bg-foreground flex items-center justify-center text-primary-foreground text-xs font-semibold flex-shrink-0">
+                    {p.initials}
                   </div>
                   <div className="min-w-0">
-                    <p className="text-sm font-semibold truncate">{ru ? p.name : p.nameEn}</p>
+                    <p className="text-sm font-medium truncate" style={{ fontFamily: "'DM Sans', sans-serif" }}>{ru ? p.name : p.nameEn}</p>
                     <p className="text-xs text-muted-foreground truncate">{ru ? p.role : p.roleEn}</p>
                   </div>
-                  {i === activeCard && <ChevronRight className="w-4 h-4 text-muted-foreground ml-auto flex-shrink-0 hidden lg:block" />}
+                  {i === activeCard && <ChevronRight className="w-3.5 h-3.5 text-muted-foreground ml-auto flex-shrink-0 hidden lg:block" />}
                 </button>
               ))}
             </div>
 
             {/* Right: full card */}
-            <div className="bg-card rounded-2xl border border-border/50 shadow-xl overflow-hidden">
+            <div className="bg-card rounded-2xl ring-1 ring-border shadow-xl overflow-hidden">
               {/* Card header */}
-              <div className="bg-gradient-to-r from-foreground/[0.03] to-transparent p-6 md:p-8 border-b border-border/30">
+              <div className="p-6 md:p-8 border-b border-border">
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex items-center gap-4">
-                    <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-pulse-green to-pulse-blue flex items-center justify-center text-white text-xl font-bold shadow-lg">
-                      {profile.avatar}
+                    <div className="w-14 h-14 rounded-2xl bg-foreground flex items-center justify-center text-primary-foreground text-lg font-bold shadow-lg">
+                      {profile.initials}
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold">{ru ? profile.name : profile.nameEn}</h3>
-                      <p className="text-sm text-muted-foreground">{ru ? profile.role : profile.roleEn}</p>
+                      <h3 className="text-xl font-bold" style={{ fontFamily: "'DM Serif Display', serif" }}>{ru ? profile.name : profile.nameEn}</h3>
+                      <p className="text-sm text-muted-foreground" style={{ fontFamily: "'DM Sans', sans-serif" }}>{ru ? profile.role : profile.roleEn}</p>
                       <div className="flex items-center gap-1.5 mt-1">
                         <MapPin className="w-3 h-3 text-muted-foreground" />
                         <span className="text-xs text-muted-foreground">{ru ? profile.location : profile.locationEn}</span>
@@ -141,58 +133,59 @@ const PulseCardDemo: React.FC = () => {
                     </div>
                   </div>
                   <div className="text-right flex-shrink-0">
-                    <div className="text-2xl font-bold text-pulse-green">{profile.revenue}</div>
-                    <span className="text-[10px] text-muted-foreground uppercase tracking-wider">{ru ? 'оборот' : 'revenue'}</span>
+                    <div className="text-2xl font-bold text-accent tracking-tight" style={{ fontFamily: "'DM Serif Display', serif" }}>{profile.revenue}</div>
+                    <span className="text-[10px] text-muted-foreground uppercase tracking-widest" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                      {ru ? 'оборот' : 'revenue'}
+                    </span>
                   </div>
                 </div>
 
-                {/* Club badge — key branding element */}
-                <div className="mt-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-border/50 bg-background/80">
-                  <div className="w-4 h-4 rounded-full flex items-center justify-center text-[8px] font-bold text-white" style={{ backgroundColor: profile.clubColor }}>
-                    {profile.club[0]}
+                {/* Club badge */}
+                <div className="mt-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-border bg-secondary/50">
+                  <div className="w-4 h-4 rounded bg-foreground flex items-center justify-center text-[7px] font-bold text-primary-foreground">
+                    S
                   </div>
-                  <span className="text-xs font-medium">{profile.club}</span>
-                  <Badge variant="secondary" className="text-[10px] px-1.5 py-0">
+                  <span className="text-xs font-medium" style={{ fontFamily: "'DM Sans', sans-serif" }}>{profile.club}</span>
+                  <span className="text-[10px] px-1.5 py-0.5 rounded bg-secondary text-muted-foreground font-medium">
                     {ru ? 'первый клуб' : 'first club'}
-                  </Badge>
+                  </span>
                 </div>
               </div>
 
               {/* Card body */}
               <div className="p-6 md:p-8 space-y-5">
-                {/* Tagline */}
-                <div>
-                  <p className="text-base font-medium">{ru ? profile.tagline : profile.taglineEn}</p>
-                </div>
+                <p className="text-base font-medium" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                  {ru ? profile.tagline : profile.taglineEn}
+                </p>
 
                 {/* Tags */}
                 <div className="flex flex-wrap gap-1.5">
                   {profile.tags.map(tag => (
-                    <Badge key={tag} variant="secondary" className="text-xs font-normal">
+                    <span key={tag} className="text-xs px-2.5 py-1 rounded-md bg-secondary text-secondary-foreground font-medium" style={{ fontFamily: "'DM Sans', sans-serif" }}>
                       {tag}
-                    </Badge>
+                    </span>
                   ))}
                 </div>
 
                 {/* Request & Offer */}
-                <div className="grid sm:grid-cols-2 gap-4">
-                  <div className="p-4 rounded-xl bg-muted/50 border border-border/30">
+                <div className="grid sm:grid-cols-2 gap-3">
+                  <div className="p-4 rounded-xl bg-secondary/70 border border-border/50">
                     <div className="flex items-center gap-2 mb-2">
-                      <MessageCircle className="w-4 h-4 text-pulse-orange" />
-                      <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                      <MessageCircle className="w-3.5 h-3.5 text-muted-foreground" />
+                      <span className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground" style={{ fontFamily: "'DM Sans', sans-serif" }}>
                         {ru ? 'Запрос' : 'Looking for'}
                       </span>
                     </div>
-                    <p className="text-sm">{ru ? profile.request : profile.requestEn}</p>
+                    <p className="text-sm" style={{ fontFamily: "'DM Sans', sans-serif" }}>{ru ? profile.request : profile.requestEn}</p>
                   </div>
-                  <div className="p-4 rounded-xl bg-muted/50 border border-border/30">
+                  <div className="p-4 rounded-xl bg-secondary/70 border border-border/50">
                     <div className="flex items-center gap-2 mb-2">
-                      <Star className="w-4 h-4 text-pulse-green" />
-                      <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                      <Star className="w-3.5 h-3.5 text-muted-foreground" />
+                      <span className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground" style={{ fontFamily: "'DM Sans', sans-serif" }}>
                         {ru ? 'Предлагает' : 'Offering'}
                       </span>
                     </div>
-                    <p className="text-sm">{ru ? profile.offer : profile.offerEn}</p>
+                    <p className="text-sm" style={{ fontFamily: "'DM Sans', sans-serif" }}>{ru ? profile.offer : profile.offerEn}</p>
                   </div>
                 </div>
               </div>
@@ -200,11 +193,19 @@ const PulseCardDemo: React.FC = () => {
           </div>
 
           {/* Caption */}
-          <p className="mt-6 text-sm text-muted-foreground font-inter leading-relaxed max-w-2xl">
+          <p className="mt-8 text-sm text-muted-foreground leading-relaxed max-w-2xl" style={{ fontFamily: "'DM Sans', sans-serif" }}>
             ☝️ {ru
               ? 'В карточке участника навсегда закрепляется бренд первого клуба, которое присоединило пользователя. На примере — Клуб SOYUZzniki.'
               : 'The participant\'s card permanently carries the brand of the first club that onboarded them. Example — Club SOYUZzniki.'}
           </p>
+
+          {/* Growth stat */}
+          <div className="mt-4 flex items-center gap-3">
+            <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+            <span className="text-sm text-muted-foreground" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+              {ru ? 'Рост 200–300 участников в неделю' : 'Growing 200–300 participants per week'}
+            </span>
+          </div>
         </div>
       </div>
     </section>
