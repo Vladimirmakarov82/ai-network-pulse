@@ -2,101 +2,77 @@
 import React, { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Brain, Coffee, Globe, Crosshair } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 const Hero: React.FC = () => {
   const { language } = useLanguage();
-  const [count, setCount] = useState(200);
+  const [slotsLeft] = useState(5);
+  const [usersPerWeek] = useState(250);
 
-  useEffect(() => {
-    // Animate counter from 0 to 200+
-    let start = 0;
-    const end = 200;
-    const duration = 2000;
-    const stepTime = duration / end;
-    const timer = setInterval(() => {
-      start += 1;
-      setCount(start);
-      if (start >= end) clearInterval(timer);
-    }, stepTime);
-    return () => clearInterval(timer);
-  }, []);
-
-  const joinTelegram = () => {
-    window.open('https://t.me/pulsecommunityopenrus', '_blank');
+  const scrollToConnect = () => {
+    const el = document.querySelector('#how-to-connect');
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
     <section id="home" className="pt-28 pb-20 bg-gradient-to-b from-background to-muted/30">
       <div className="container mx-auto px-4">
         <div className="text-center max-w-4xl mx-auto">
-          {/* Badge */}
+          {/* Growth badge */}
           <div className="inline-flex items-center gap-2 bg-pulse-green/10 text-pulse-green px-4 py-2 rounded-full text-xs font-medium uppercase tracking-widest mb-8 animate-fade-in">
             <div className="w-1.5 h-1.5 bg-pulse-green rounded-full animate-pulse-glow"></div>
-            {language === 'ru' ? 'Протокол работает' : 'Protocol is live'}
+            +{usersPerWeek} {language === 'ru' ? 'участников в неделю' : 'participants per week'}
           </div>
 
           {/* Main Heading */}
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-[0.95] animate-fade-in tracking-tighter">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-[0.95] animate-fade-in tracking-tighter">
             <span className="gradient-text">
               {language === 'ru'
-                ? 'Нетворкинг эффективнее в 100 раз'
-                : 'Networking 100× more effective'}
+                ? 'Протокол цифровой идентичности для бизнес-сообществ'
+                : 'Digital identity protocol for business communities'}
             </span>
           </h1>
 
-          {/* Subtitle */}
-          <p className="text-lg md:text-xl text-muted-foreground mb-4 font-medium animate-fade-in tracking-tight">
+          {/* Key contradiction */}
+          <p className="text-lg md:text-xl text-muted-foreground mb-4 font-medium animate-fade-in tracking-tight max-w-3xl mx-auto">
             {language === 'ru'
-              ? 'Pulse Meeting Intelligence Protocol'
-              : 'Pulse Meeting Intelligence Protocol'}
+              ? 'Твои участники уже нетворкаются за пределами клуба. Просто без твоего бренда рядом.'
+              : 'Your members are already networking outside your club. Just without your brand next to them.'}
           </p>
 
-          {/* Description removed */}
+          <p className="text-base text-muted-foreground/70 mb-10 max-w-2xl mx-auto animate-fade-in leading-relaxed font-inter">
+            {language === 'ru'
+              ? 'Pulse не заменяет клубы — он делает их участников видимыми за пределами чата. Каждый участник получает Pulse Card, каждый клуб — Pulse Feed.'
+              : 'Pulse doesn\'t replace clubs — it makes their members visible beyond the chat. Every member gets a Pulse Card, every club gets a Pulse Feed.'}
+          </p>
 
-          {/* Counter */}
-          <div className="mb-12 animate-fade-in">
-            <div className="inline-flex items-baseline gap-3">
-              <span className="text-6xl md:text-7xl font-bold gradient-text tracking-tighter">{count}+</span>
-              <span className="text-base text-muted-foreground font-inter">
+          {/* Slot urgency */}
+          <div className="mb-10 animate-fade-in">
+            <div className="inline-flex flex-col items-center gap-2 bg-card border border-border/50 rounded-2xl px-8 py-5 shadow-lg">
+              <div className="flex items-baseline gap-3">
+                <span className="text-5xl md:text-6xl font-bold text-pulse-orange tracking-tighter">{slotsLeft}</span>
+                <span className="text-base text-muted-foreground font-inter">
+                  {language === 'ru' ? 'слотов до 30 марта' : 'slots until March 30'}
+                </span>
+              </div>
+              <p className="text-sm text-muted-foreground/70 font-inter">
                 {language === 'ru'
-                  ? 'предпринимателей с оборотом $2–30M'
-                  : 'entrepreneurs with $2–30M revenue'}
-              </span>
+                  ? 'Заявок больше, чем слотов. Первым 30 комьюнити — первый год бесплатно.'
+                  : 'More applications than slots. First 30 communities — first year free.'}
+              </p>
             </div>
           </div>
 
           {/* CTA */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in">
-            <Button 
+            <Button
               size="lg"
-              variant="outline"
-              className="border-muted-foreground/20 hover:bg-muted font-semibold px-8 py-3 text-lg"
-              onClick={joinTelegram}
+              className="bg-pulse-green hover:bg-pulse-green/90 text-white font-semibold px-8 py-3 text-lg"
+              onClick={scrollToConnect}
             >
-              <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 0C5.374 0 0 5.373 0 12s5.374 12 12 12 12-5.373 12-12S18.626 0 12 0zm5.568 8.16l-1.628 7.66c-.122.567-.447.707-.905.44l-2.5-1.842-1.205 1.16c-.133.133-.246.246-.505.246l.18-2.52 4.625-4.175c.2-.178-.043-.277-.31-.1l-5.72 3.6-2.46-.77c-.535-.167-.546-.535.11-.79L16.47 7.69c.447-.166.836.1.69.787z"/>
-              </svg>
-              {language === 'ru' ? 'Telegram канал' : 'Join Telegram'}
+              {language === 'ru' ? 'Подключить комьюнити' : 'Connect your community'}
+              <ArrowRight className="w-5 h-5 ml-2" />
             </Button>
-          </div>
-
-          {/* Key concepts */}
-          <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6">
-            {[
-              { icon: <Brain className="w-5 h-5" />, label: language === 'ru' ? 'ИИ Pulsia' : 'Pulsia AI', sub: language === 'ru' ? 'анализирует встречи' : 'analyzes meetings', gradient: 'from-violet-500 to-purple-400' },
-              { icon: <Coffee className="w-5 h-5" />, label: 'CoffeeSync', sub: language === 'ru' ? 'формат бизнес-завтраков' : 'business breakfast format', gradient: 'from-amber-500 to-orange-400' },
-              { icon: <Globe className="w-5 h-5" />, label: language === 'ru' ? 'Клубы и комьюнити' : 'Clubs & Communities', sub: language === 'ru' ? 'единая платформа' : 'unified platform', gradient: 'from-emerald-500 to-teal-400' },
-              { icon: <Crosshair className="w-5 h-5" />, label: language === 'ru' ? 'Профили участников' : 'Participant profiles', sub: language === 'ru' ? 'на основе интро' : 'based on intros', gradient: 'from-blue-500 to-cyan-400' },
-            ].map((item, i) => (
-              <div key={i} className="flex flex-col items-center p-5 rounded-2xl bg-card border border-border/50 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-                <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${item.gradient} flex items-center justify-center text-white mb-3 shadow-lg`}>
-                  {item.icon}
-                </div>
-                <span className="text-sm font-semibold">{item.label}</span>
-                <span className="text-xs text-muted-foreground">{item.sub}</span>
-              </div>
-            ))}
           </div>
         </div>
       </div>

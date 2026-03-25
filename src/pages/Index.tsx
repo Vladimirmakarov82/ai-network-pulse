@@ -3,31 +3,30 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
-import About from '@/components/About';
-import PulseAI from '@/components/PulseAI';
-
+import ProductLayers from '@/components/ProductLayers';
+import ClubConnect from '@/components/ClubConnect';
 import Footer from '@/components/Footer';
 
 const Index = () => {
   return (
     <>
       <Helmet>
-        <title>Нетворкинг эффективнее в 100 раз — Pulse Community</title>
-        <meta name="description" content="Нейронка Pulsia анализирует оффлайн-встречи и находит идеальные совпадения между участниками — клиентов, партнёров, инвесторов. 200+ предпринимателей с оборотом $2–30M." />
+        <title>Pulse — протокол цифровой идентичности для бизнес-сообществ</title>
+        <meta name="description" content="Pulse делает участников бизнес-клубов видимыми за пределами чата. Pulse Card, Pulse Feed, PulsIA — инфраструктура нетворкинга для комьюнити." />
         <link rel="canonical" href="https://ai-network-pulse.lovable.app/" />
         <meta property="og:url" content="https://ai-network-pulse.lovable.app/" />
-        <meta property="og:title" content="Нетворкинг эффективнее в 100 раз — Pulse Community" />
-        <meta property="og:description" content="Нейронка Pulsia анализирует оффлайн-встречи и находит идеальные совпадения между участниками — клиентов, партнёров, инвесторов." />
+        <meta property="og:title" content="Pulse — протокол цифровой идентичности для бизнес-сообществ" />
+        <meta property="og:description" content="Pulse делает участников бизнес-клубов видимыми за пределами чата. Pulse Card, Pulse Feed, PulsIA." />
         <meta property="og:image" content="https://ai-network-pulse.lovable.app/og-main.png" />
-        <meta name="twitter:title" content="Нетворкинг эффективнее в 100 раз — Pulse Community" />
-        <meta name="twitter:description" content="Нейронка Pulsia анализирует оффлайн-встречи и находит идеальные совпадения между участниками." />
+        <meta name="twitter:title" content="Pulse — протокол цифровой идентичности для бизнес-сообществ" />
+        <meta name="twitter:description" content="Pulse делает участников бизнес-клубов видимыми за пределами чата." />
         <meta name="twitter:image" content="https://ai-network-pulse.lovable.app/og-main.png" />
       </Helmet>
       <div className="min-h-screen bg-background">
         <Header />
         <Hero />
-        <About />
-        <PulseAI />
+        <ProductLayers />
+        <ClubConnect />
         <Footer />
       </div>
     </>
