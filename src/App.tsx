@@ -10,6 +10,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import CoffeeSync4 from "./pages/CoffeeSync4";
 import CoffeeSync5 from "./pages/CoffeeSync5";
+import CoffeeSync from "./pages/CoffeeSync";
 
 const queryClient = new QueryClient();
 

@@ -4,21 +4,34 @@ import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
 import LanguageToggle from './LanguageToggle';
 import { Menu, X } from 'lucide-react';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const Header: React.FC = () => {
   const { language } = useLanguage();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const navItems = [
-    { label: language === 'ru' ? 'Главная' : 'Home', href: '#home' },
-    { label: language === 'ru' ? 'Как это работает' : 'How it works', href: '#about' },
-    { label: language === 'ru' ? 'CoffeeSync' : 'CoffeeSync', href: '#coffeesync' },
+    { label: language === 'ru' ? 'Главная' : 'Home', href: '/', type: 'route' as const },
+    { label: language === 'ru' ? 'Продукт' : 'Product', href: '#product', type: 'anchor' as const },
+    { label: 'CoffeeSync', href: '/coffeesync', type: 'route' as const },
   ];
 
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+  const handleNav = (item: typeof navItems[0]) => {
+    if (item.type === 'route') {
+      navigate(item.href);
+    } else {
+      if (location.pathname !== '/') {
+        navigate('/');
+        setTimeout(() => {
+          const el = document.querySelector(item.href);
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      } else {
+        const el = document.querySelector(item.href);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }
     }
     setIsMenuOpen(false);
   };
@@ -27,7 +40,7 @@ const Header: React.FC = () => {
     <header className="fixed top-0 left-0 right-0 z-50 glass-effect">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 cursor-pointer" onClick={() => navigate('/')}>
             <div className="w-8 h-8 rounded-full bg-gradient-to-r from-pulse-green to-pulse-blue flex items-center justify-center">
               <span className="text-white font-bold text-sm">P</span>
             </div>
@@ -38,7 +51,7 @@ const Header: React.FC = () => {
             {navItems.map((item) => (
               <button
                 key={item.href}
-                onClick={() => scrollToSection(item.href)}
+                onClick={() => handleNav(item)}
                 className="text-sm text-muted-foreground hover:text-foreground font-medium transition-colors tracking-tight"
               >
                 {item.label}
@@ -48,11 +61,21 @@ const Header: React.FC = () => {
 
           <div className="hidden md:flex items-center gap-4">
             <LanguageToggle />
-            <Button 
+            <Button
               className="bg-pulse-green hover:bg-pulse-green/90 text-white font-semibold px-6"
-              onClick={() => window.open('https://t.me/pulsecommunityopenrus', '_blank')}
+              onClick={() => {
+                const el = document.querySelector('#how-to-connect');
+                if (el) {
+                  el.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                  navigate('/');
+                  setTimeout(() => {
+                    document.querySelector('#how-to-connect')?.scrollIntoView({ behavior: 'smooth' });
+                  }, 100);
+                }
+              }}
             >
-              Telegram
+              {language === 'ru' ? 'Подключить' : 'Connect'}
             </Button>
           </div>
 
@@ -70,17 +93,28 @@ const Header: React.FC = () => {
               {navItems.map((item) => (
                 <button
                   key={item.href}
-                  onClick={() => scrollToSection(item.href)}
+                  onClick={() => handleNav(item)}
                   className="text-left text-muted-foreground hover:text-foreground font-medium py-2"
                 >
                   {item.label}
                 </button>
               ))}
-              <Button 
+              <Button
                 className="bg-pulse-green hover:bg-pulse-green/90 text-white font-semibold mt-2"
-                onClick={() => window.open('https://t.me/pulsecommunityopenrus', '_blank')}
+                onClick={() => {
+                  const el = document.querySelector('#how-to-connect');
+                  if (el) {
+                    el.scrollIntoView({ behavior: 'smooth' });
+                  } else {
+                    navigate('/');
+                    setTimeout(() => {
+                      document.querySelector('#how-to-connect')?.scrollIntoView({ behavior: 'smooth' });
+                    }, 100);
+                  }
+                  setIsMenuOpen(false);
+                }}
               >
-                Telegram
+                {language === 'ru' ? 'Подключить' : 'Connect'}
               </Button>
             </div>
           </nav>
