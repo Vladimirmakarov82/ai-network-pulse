@@ -10,10 +10,10 @@ const About: React.FC = () => {
   const features = [
     {
       icon: <Mic className="w-7 h-7" />,
-      title: language === 'ru' ? 'Живые данные с встреч' : 'Live meeting data',
+      title: language === 'ru' ? 'Автоматические профили' : 'Auto-generated profiles',
       description: language === 'ru'
-        ? 'На встречах участники рассказывают о себе, делятся запросами. Организатор записывает на диктофон — так формируется уникальная, социально подтверждённая информация.'
-        : 'Participants share about themselves and their needs at meetings. The organizer records it — creating unique, socially verified information.',
+        ? 'На встречах участники представляются и рассказывают о себе. Pulsia автоматически создаёт профиль на основе интро — без анкет и ручного ввода.'
+        : 'At meetings, participants introduce themselves. Pulsia automatically creates a profile based on the intro — no forms or manual input needed.',
       gradient: 'from-emerald-500 to-teal-400',
       shadow: 'shadow-emerald-500/20',
     },
